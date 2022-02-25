@@ -1,0 +1,14 @@
+# Ignore everything 
+/*
+# Except
+!.gitignore
+!.gitmodules
+
+# Add these directories
+!qtile/
+!fish/
+!alacritty
+
+# And files
+!cadaArch.txt
+
