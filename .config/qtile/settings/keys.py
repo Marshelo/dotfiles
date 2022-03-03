@@ -107,7 +107,8 @@ keys = [
     # ------------ Open Apps ------------ #
 
     # Browser
-    Key([mod], 'b', lazy.spawn('qutebrowser')),
+    Key([mod], 'b', lazy.spawn('firefox')),
+    Key([mod, 'shift'], 'b', lazy.spawn('qutebrowser')),
 
     # Terminal
     Key([mod], 'Return', lazy.spawn(terminal)),
