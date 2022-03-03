@@ -45,6 +45,20 @@ function fish_prompt
         # set_color -o green
         # echo -n ']'
     end
+    function _git_prompt
+        set retc $argv[1]
+        set -l field_name $argv[2]
+        set -l field_value $argv[3]
+
+        set_color normal
+        set_color $retc
+        echo -n ' '
+        set_color brwhite
+        test -n $field_name
+        set_color $retc
+        echo -n "$field_value"
+        echo -n ""
+    end
 
     set_color green
     echo -n '    '

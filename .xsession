@@ -35,7 +35,7 @@ fi
 # Set the 100% of brightness
 brightnessctl set 100% &
 # Image compositor
-picom &
+picom --experimental-backend -b &
 # Screens
 
 # # Tele a la izquierda
@@ -52,7 +52,8 @@ xrandr --output eDP1 --primary --mode 1366x768 --pos 0x768 --rotate normal --out
 feh --bg-scale ~/Wallpapers/wallpaper2.jpg &
 
 # Keyboard layout
-setxkbmap us &
+[[ -f ~/.MyKeys ]] && xmodmap ~/.MyKeys
+# setxkbmap us &
 
 # # Automount devices
 # udiskie -t &

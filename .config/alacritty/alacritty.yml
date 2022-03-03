@@ -41,7 +41,7 @@ window:
   #     - buttonless: Title bar, transparent background and no title bar buttons
   decorations: full
 
-  opacity: 0.96
+  opacity: 0.97
 
   title: Alacritty
   dynamic_title: true

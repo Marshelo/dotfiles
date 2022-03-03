@@ -15,10 +15,10 @@ alt = 'mod1'
 terminal = guess_terminal()
 
 
-left = 'h'
-right = 'l'
-up = 'k'
-down = 'j'
+left = 'a'
+down = 'z'
+up = 's'
+right = 'x'
 
 leftVim = 'h'
 downVim = 'j'
@@ -37,23 +37,23 @@ keys = [
 
     # Switch between windows
     Key([mod], left, lazy.layout.left()),
-    Key([mod], right, lazy.layout.right()),
     Key([mod], down, lazy.layout.down()),
     Key([mod], up, lazy.layout.up()),
+    Key([mod], right, lazy.layout.right()),
     Key([mod], 'space', lazy.layout.next()),
 
     # Move windows
     Key([mod, 'shift'], left, lazy.layout.shuffle_left()),
-    Key([mod, 'shift'], right, lazy.layout.shuffle_right()),
     Key([mod, 'shift'], down, lazy.layout.shuffle_down()),
     Key([mod, 'shift'], up, lazy.layout.shuffle_up()),
+    Key([mod, 'shift'], right, lazy.layout.shuffle_right()),
     # Moving out of range in Columns layout will create new column.
 
     # Grow windows
     Key([mod, 'control', 'shift'], leftVim, lazy.layout.grow_left()),
     Key([mod, 'control', 'shift'], rightVim, lazy.layout.grow_right()),
     
-    Key([mod, 'control', 'shift'],downVim,
+    Key([mod, 'control', 'shift'], downVim,
         lazy.layout.grow_down().when(layout='columns'),
         lazy.layout.shrink().when(layout='monadtall'),
         lazy.layout.shrink().when(layout='monadwide')),
@@ -63,7 +63,7 @@ keys = [
         lazy.layout.grow().when(layout='monadwide')),
 
     # More
-    Key(['shift'], 'F11', lazy.window.toggle_fullscreen()),
+    Key([mod], 'F11', lazy.window.toggle_fullscreen()),
         
     Key([mod, 'control'], 'space', lazy.layout.flip()),
     Key([mod, 'control'], 'n', lazy.layout.normalize()),
@@ -82,7 +82,7 @@ keys = [
     # Window Edit mode (Basically the same shortcuts but whitout the mod key)
     
 
-    # ------------ App Configs ------------ #
+    # ------------ Desktop Apps ------------ #
 
     # Menu
     Key([mod], 'o', lazy.spawn('rofi -modi drun -show drun')),
@@ -97,24 +97,26 @@ keys = [
     # # Window Nav
     # Key([alt], 'Tab', lazy.spawn('rofi -show')),
 
+    # Widget cmd line
+    Key([mod], 'p', lazy.spawncmd()),
+
+    # Screenshot
+    Key([], 'Print', lazy.spawn('scrot -s')),
+    Key(['shift'], 'Print', lazy.spawn('scrot')),
+
+    # ------------ Open Apps ------------ #
 
     # Browser
-    Key([mod], 'b', lazy.spawn('firefox')),
+    Key([mod], 'b', lazy.spawn('qutebrowser')),
 
     # Terminal
     Key([mod], 'Return', lazy.spawn(terminal)),
 
     # File manager
-    Key([mod], 'f', lazy.spawn('thunar')),
+    Key([mod], 't', lazy.spawn('thunar')),
 
-    # Screenshot
-    Key([], 'Print', lazy.spawn('scrot -s')),
-    Key([mod, 'shift'], 's', lazy.spawn('scrot')),
+    # ------------ ?? ------------ #
 
-
-    # ------------ Widgets Configs ------------ #
-
-    Key([mod], 't', lazy.spawncmd()),
     Key([alt], 'Return', # Toggle keyboard map
         lazy.spawn('bash /home/shelo/.config/qtile/scripts/toggleKeyboard.sh'),
         desc='Toggle keymap beetwen US & Latam keyboard'),
@@ -151,28 +153,31 @@ keys = [
     Key([], 'XF86MonBrightnessDown',
         lazy.spawn('brightnessctl set 5%-')),
 
-    Key([mod], 'p', lazy.spawn('arandr'))
-    # I don't facking now what the hell is happening here.
-    # The function of the F4 key is red like Super_L + p.
-    # So I just putted that keys here and it works, but now
-    # if I really press Super_L + p run the same function.
-  
-
+    Key([mod], 'F4', lazy.spawn('arandr')),
 ]
 
 firstNums = 4 # Just until 9 and no negative numbers
 groupKeys = 'qwer' # Leave empty to use only numbers or assign letters to use them for the group's shortcuts.
-# Whit this new loop you can assign a shortcut automatically for each group with letters
+# Whit this loop you can assign a shortcut automatically for each group with letters
 # The first 8 shortcut are so confortable with {1, 2, 3, 4, q, w, e, r}.
+sep = 0
 for i, group in enumerate(groups):
     actual_key = ''
-    if i < firstNums:
+    ii = i - sep
+    # the ii var back the i value to his natural course after adding a separator
+    # because the separator is actually another group but I skip them whit this if statement below
+    # to don't add any shortcut to them
+    if group.name == 'separator':
+        sep += 1
+        continue
+
+    if ii < firstNums:
         actual_key = str(i + 1)
-    elif i < firstNums + len(groupKeys):
-        actual_key = groupKeys[i - 4]
-    elif firstNums + len(groupKeys) - 1 < i < 9 + len(groupKeys):
-        actual_key = str(i - len(groupKeys) + 1)
-    elif i == 9 + len(groupKeys):
+    elif ii < firstNums + len(groupKeys):
+        actual_key = groupKeys[ii - 4]
+    elif firstNums + len(groupKeys) - 1 < ii < 9 + len(groupKeys):
+        actual_key = str(ii - len(groupKeys) + 1)
+    elif ii == 9 + len(groupKeys):
         actual_key = '0'
     
     keys.extend([

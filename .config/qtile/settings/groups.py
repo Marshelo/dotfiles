@@ -15,10 +15,11 @@ groups = [
     Group(''),
     Group(''),
     Group(''),
+    Group(name='separator', label='|'),
     Group(''),
     Group(boardG),
-    Group(videoG),
-    Group(radioG),
+    Group(videoG, layout='max'),
+    Group(radioG, layout='max'),
 ]
 
 # more icons:    
