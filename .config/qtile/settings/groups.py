@@ -3,6 +3,7 @@ from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
 from libqtile.config import Group, Key, KeyChord
 
+separator = ''
 
 # G of Group
 boardG = '舘' #    舘 
@@ -14,12 +15,13 @@ groups = [
     Group('ﲋ'), # This icon is bugged
     Group(''),
     Group(''),
-    Group(''),
-    Group(name='separator', label='|'),
-    Group(''),
+    Group(name='sep1', label=separator),
     Group(boardG),
     Group(videoG, layout='max'),
     Group(radioG, layout='max'),
+    Group(name='sep2', label=separator),
+    Group(''),
+    Group(''),
 ]
 
 # more icons:    

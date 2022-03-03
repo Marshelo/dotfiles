@@ -10,7 +10,7 @@ from libqtile import extension
 from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
 
-from .groups import groups, videoG, radioG, boardG
+from .groups import groups, videoG, radioG, boardG, separator
 
 # If something happend, see the default commands here
 # https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -161,29 +161,31 @@ keys = [
 
     Key([mod], 'F4', lazy.spawn('arandr')),
 ]
+# cambiar nombre variable actual_key a current_key
 
-firstNums = 4 # Just until 9 and not negative numbers
-groupKeys = 'qwer' # Leave empty to use only numbers or assign letters to use them for the group's shortcuts.
-# Whit this loop you can assign a shortcut automatically for each group with letters
-# The first 8 shortcut are so confortable with {1, 2, 3, 4, q, w, e, r}.
+first_nums = 3
+group_keys = 'qwe'
 sep = 0
 for i, group in enumerate(groups):
+
     actual_key = ''
     ii = i - sep
     # the ii var back the i value to his natural course after adding a separator
-    # because the separator is actually another group but I skip it whit this if statement below
-    # to don't add any shortcut to it.
-    if group.name == 'separator':
+    # because the separator is actually another group but I skip it whit this if
+    # statement below to don't add any shortcut to it.
+    if group.label == separator:
         sep += 1
+        # if sep == 2:
+        #     break
         continue
 
-    if ii < firstNums:
+    if ii < first_nums:
         actual_key = str(i + 1)
-    elif ii < firstNums + len(groupKeys):
-        actual_key = groupKeys[ii - 4]
-    elif firstNums + len(groupKeys) - 1 < ii < 9 + len(groupKeys):
-        actual_key = str(ii - len(groupKeys) + 1)
-    elif ii == 9 + len(groupKeys):
+    elif ii < first_nums + len(group_keys):
+        actual_key = group_keys[ii - len(group_keys)]
+    elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
+        actual_key = str(ii - len(group_keys) + 1)
+    elif ii == 9 + len(group_keys):
         actual_key = '0'
     
     keys.extend([
