@@ -52,8 +52,7 @@ xrandr --output eDP1 --primary --mode 1366x768 --pos 0x768 --rotate normal --out
 feh --bg-scale ~/Wallpapers/wallpaper2.jpg &
 
 # Keyboard layout
-[[ -f ~/.MyKeys ]] && xmodmap ~/.MyKeys
-# setxkbmap us &
+setxkbmap es && xmodmap ~/.MyKeys &
 
 # # Automount devices
 # udiskie -t &
