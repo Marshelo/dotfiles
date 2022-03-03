@@ -165,6 +165,8 @@ keys = [
 
 first_nums = 3
 group_keys = 'qwe'
+common_first_nums = 1
+common_group_keys = 'r'
 sep = 0
 for i, group in enumerate(groups):
 
@@ -179,14 +181,24 @@ for i, group in enumerate(groups):
         #     break
         continue
 
-    if ii < first_nums:
-        actual_key = str(i + 1)
-    elif ii < first_nums + len(group_keys):
-        actual_key = group_keys[ii - len(group_keys)]
-    elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
-        actual_key = str(ii - len(group_keys) + 1)
-    elif ii == 9 + len(group_keys):
-        actual_key = '0'
+    if sep < 2:
+        if ii < first_nums:
+            actual_key = str(i + 1)
+        elif ii < first_nums + len(group_keys):
+            actual_key = group_keys[ii - len(group_keys)]
+        # elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
+        #     actual_key = str(ii - len(group_keys) + 1)
+        # elif ii == 9 + len(group_keys):
+        #     actual_key = '0'
+    elif sep == 2:
+        if ii - first_nums < common_first_nums:
+            actual_key = str(ii - first_nums + 1)
+        # elif ii < first_nums + common_first_nums + len(group_keys) + common_group_keys:
+        #     actual_key = group_keys[ii - len(group_keys)]
+        # elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
+        #     actual_key = str(ii - len(group_keys) + 1)
+        # elif ii == 9 + len(group_keys):
+        #     actual_key = '0'
     
     keys.extend([
         Key([mod], actual_key, lazy.group[group.name].toscreen()),
