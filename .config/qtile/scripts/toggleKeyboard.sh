@@ -9,6 +9,15 @@ fi
 
 if [[ $layout = "latam" ]]
 then
+    if [[ -f ~/.MyKeys ]]
+    then
+        setxkbmap es && xmodmap ~/.MyKeys
+    else
+        setxkbmap us
+    fi
+fi
+if [[ $layout = "es" ]]
+then
     setxkbmap us
 fi
 

@@ -1,39 +1,56 @@
+# With this key bindings I pretend to have the power of the keyboard and the power of the mouse
+# synchronized for work with every thing. For that I had to found the way to work in the keyboard
+# just with the left hand for leave free my right hand only for the mouse. And I founded the way
+# and is very efficient.
+# Actually I have to move the right hand to the keyboard for some commands, but only if I will
+# write or do more complex key combinations.  
+
+
 from libqtile import extension
 from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
-from libqtile.utils import guess_terminal
 
 from .groups import groups, videoG, radioG, boardG
 
-from libqtile.log_utils import logger
-
+# If something happend, see the default commands here
+# https://docs.qtile.org/en/latest/manual/config/lazy.html
 
 # Hacer combinación de teclas para mostrar el modo en el que estoy
 
-mod = 'mod4'
+mod = 'mod4' # Super key
 alt = 'mod1'
-terminal = guess_terminal()
+
+# -- Logic for the modifier keys --
+# Super key:
+#   Starts all the keybindings for qtile, for differentiate with the commands of the opened applications.
+# Shift:
+#   When there is already a keybinding for a command, this key toggle the function to its inverse or just change
+#   the main functionality.
+#   Shift also can have original keybindings but if is combined with another modifier key, bisides the super key.
+# Control:
+#   This key is just for original keybindings.
+#   It's used for grow windows and run special commands.
+# Alt:
+#   I reserve this key for windows tasks, except for move and grow windows (for comfort).
 
 
+# I realized that thumb on super key and the other fingers on w, a, s and d is a very bad position for the
+# articulations of my thumb. So I replaced w, a, s, d for s, a, z, x, respectively for decrease bad effects.
 left = 'a'
 down = 'z'
 up = 's'
 right = 'x'
 
+# These are if I want to do keybindings like vim
 leftVim = 'h'
 downVim = 'j'
 upVim = 'k'
 rightVim = 'l'
 
-
-# Main key bindings. In mode.py there is the key bindings for each mode.
+terminal = 'alacritty'
 
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-
-
-    # ------------ Windows Config ------------ #
+    # ------------ Windows ------------ #
 
     # Switch between windows
     Key([mod], left, lazy.layout.left()),
@@ -47,7 +64,6 @@ keys = [
     Key([mod, 'shift'], down, lazy.layout.shuffle_down()),
     Key([mod, 'shift'], up, lazy.layout.shuffle_up()),
     Key([mod, 'shift'], right, lazy.layout.shuffle_right()),
-    # Moving out of range in Columns layout will create new column.
 
     # Grow windows
     Key([mod, 'control', 'shift'], leftVim, lazy.layout.grow_left()),
@@ -78,24 +94,14 @@ keys = [
     # Key([mod], 'F5', lazy.restart()),
     Key([mod], 'F5', lazy.spawn('qtile cmd-obj -o cmd -f restart')), # Change "restart" to "reload_config" if you have the qtile git version.
     Key([mod], 'Delete', lazy.shutdown()),
-    
-    # Window Edit mode (Basically the same shortcuts but whitout the mod key)
-    
 
     # ------------ Desktop Apps ------------ #
 
     # Menu
     Key([mod], 'o', lazy.spawn('rofi -modi drun -show drun')),
     Key([mod, 'shift'], 'o', lazy.run_extension(extension.DmenuRun(
-        dmenu_font='JetBrainsMono Nerd Font',
-        font='JetBrainsMono Nerd Font',
-        dmenu_lines=4,
-    ))),
+        dmenu_font='JetBrainsMono Nerd Font', dmenu_lines=4))),
     Key([alt], 'Tab', lazy.spawn('rofi -show')),
-    # # Menu
-    # Key([mod], 'o', lazy.spawn('rofi -modi drun -show drun')),
-    # # Window Nav
-    # Key([alt], 'Tab', lazy.spawn('rofi -show')),
 
     # Widget cmd line
     Key([mod], 'p', lazy.spawncmd()),
@@ -121,7 +127,6 @@ keys = [
     Key([alt], 'Return', # Toggle keyboard map
         lazy.spawn('bash /home/shelo/.config/qtile/scripts/toggleKeyboard.sh'),
         desc='Toggle keymap beetwen US & Latam keyboard'),
-
 
     # ------------ Function Keys ------------ #
 
@@ -157,7 +162,7 @@ keys = [
     Key([mod], 'F4', lazy.spawn('arandr')),
 ]
 
-firstNums = 4 # Just until 9 and no negative numbers
+firstNums = 4 # Just until 9 and not negative numbers
 groupKeys = 'qwer' # Leave empty to use only numbers or assign letters to use them for the group's shortcuts.
 # Whit this loop you can assign a shortcut automatically for each group with letters
 # The first 8 shortcut are so confortable with {1, 2, 3, 4, q, w, e, r}.
@@ -166,8 +171,8 @@ for i, group in enumerate(groups):
     actual_key = ''
     ii = i - sep
     # the ii var back the i value to his natural course after adding a separator
-    # because the separator is actually another group but I skip them whit this if statement below
-    # to don't add any shortcut to them
+    # because the separator is actually another group but I skip it whit this if statement below
+    # to don't add any shortcut to it.
     if group.name == 'separator':
         sep += 1
         continue
