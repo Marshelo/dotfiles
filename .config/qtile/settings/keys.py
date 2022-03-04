@@ -191,8 +191,10 @@ for i, group in enumerate(groups):
     if sep == 2:
         if ii - first_nums - len(group_keys) < common_first_nums:
             current_key = str(ii - len(group_keys) + 1)
-        # elif ii < first_nums + len(group_keys):
-        #     current_key = group_keys[ii - len(group_keys)]
+        # elif ii < first_nums + len(group_keys) + common_first_nums + common_group_keys:
+        #     # current_key = group_keys[ii - first_nums - len(group_keys) - common_first_nums]
+        #     pass
+
         # elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
         #     current_key = str(ii - len(group_keys) + 1)
         # elif ii == 9 + len(group_keys):
