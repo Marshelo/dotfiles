@@ -193,8 +193,6 @@ for i, group in enumerate(groups):
     if sep == 3:
         if ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys) + 9:
             current_key = str(ii - (len(group_keys) + len(common_group_keys)) + 1)
-        elif ii == 9 + first_nums + len(group_keys) + common_first_nums + len(common_group_keys):
-            current_key = str(0)
     
     if not current_key == '':
         keys.extend([

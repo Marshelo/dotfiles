@@ -28,8 +28,6 @@ groups = [
     Group(''),
     Group(''),
     Group(''),
-    #Group(''),
-    #Group(''),
 ]
 
 # more icons:    
