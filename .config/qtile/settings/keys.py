@@ -10,7 +10,7 @@ from libqtile import extension
 from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
 
-from .groups import groups, videoG, radioG, boardG, separator
+from .groups import groups, separator
 
 # If something happend, see the default commands here
 # https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -200,9 +200,3 @@ for i, group in enumerate(groups):
             Key([mod, 'shift'], current_key, lazy.window.togroup(group.name))
         ])
 
-keys.extend([
-        KeyChord([mod], 'm', [
-            Key([], 'v', lazy.group[videoG].toscreen()),
-            Key([], 'a', lazy.group[radioG].toscreen()),
-        ])  
-    ])
