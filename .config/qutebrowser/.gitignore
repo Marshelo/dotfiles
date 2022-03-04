@@ -1,0 +1,8 @@
+/*
+!.gitignore
+
+!autoconfig.yml
+!config.py
+!theme.py
+
+!themes
