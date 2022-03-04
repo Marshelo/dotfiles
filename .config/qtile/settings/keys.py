@@ -194,11 +194,9 @@ for i, group in enumerate(groups):
         elif ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys):
             current_key = common_group_keys[ii - first_nums - len(group_keys) - common_first_nums]
             pass
-
-        # elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
-        #     current_key = str(ii - len(group_keys) + 1)
-        # elif ii == 9 + len(group_keys):
-        #     current_key = '0'
+    if sep == 3:
+        if ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys) + 9:
+            current_key = str(ii - (len(group_keys) + len(common_group_keys)) + 1)
     
     if not current_key == '':
         keys.extend([

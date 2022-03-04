@@ -22,6 +22,7 @@ groups = [
     Group(name='sep2', label=separator),
     Group(''),
     Group(''),
+    Group(name='sep3', label=separator),
     Group(''),
     Group(''),
 ]
