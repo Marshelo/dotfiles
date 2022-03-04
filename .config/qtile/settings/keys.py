@@ -164,8 +164,8 @@ keys = [
 # cambiar nombre variable actual_key a current_key
 
 first_nums = 3
-group_keys = 'qwe'
-common_first_nums = 1
+group_keys = 'qwer'
+common_first_nums = 2
 common_group_keys = 'r'
 sep = 0
 for i, group in enumerate(groups):
@@ -177,19 +177,26 @@ for i, group in enumerate(groups):
     # statement below to don't add any shortcut to it.
     if group.label == separator:
         sep += 1
-        # if sep == 2:
-        #     break
         continue
 
     if sep < 2:
         if ii < first_nums:
-            current_key = str(i + 1)
+            current_key = str(ii + 1)
         elif ii < first_nums + len(group_keys):
-            current_key = group_keys[ii - len(group_keys)]
+            current_key = group_keys[ii - first_nums]
         elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
             current_key = str(ii - len(group_keys) + 1)
         elif ii == 9 + len(group_keys):
             current_key = '0'
+    # if sep == 2:
+    #     if ii - first_nums - len(group_keys) < common_first_nums:
+    #         current_key = str(ii - first_nums + 1)
+        # elif ii < first_nums + len(group_keys):
+        #     current_key = group_keys[ii - len(group_keys)]
+        # elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
+        #     current_key = str(ii - len(group_keys) + 1)
+        # elif ii == 9 + len(group_keys):
+        #     current_key = '0'
     
     if not current_key == '':
         keys.extend([
