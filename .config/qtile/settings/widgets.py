@@ -26,7 +26,7 @@ def triangle(fg='#ffffff', bg='#000000', direction='left'):
         foreground=fg
     )
 
-def display_groups(visible=[]):
+def display_groups(visible=[], hide_unused=False, fg='#ffffff', bg='#000000'):
     return widget.GroupBox(
         # ~~ Frame ~~
         # Text
@@ -38,31 +38,35 @@ def display_groups(visible=[]):
         spacing=None,
         center_aligned=True,
         # Selector
-        highlight_method='line',
+        highlight_method='border',
         padding_y=5,
         padding_x=10,
         borderwidth=0,
         # ~~ Color ~~
+        background=bg,
         # Text
-        block_highlight_text_color='#ffffff',
+        block_highlight_text_color='#0055ff',
         active='#bbbbbb',
+        foreground='#ffff00',
         # Selector
-        highlight_color='#0055ff',
+        highlight_color='#ffffff',
+        # urgent_text='#ffff00',
         # ~~ Extra ~~
         disable_drag=True,
-        visible_groups=visible
+        visible_groups=visible,
+        hide_unused=hide_unused
     )
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                display_groups(['ﲋ', '', '']),
+                display_groups(['ﲋ', '', ''], bg='#454545'),
                 triangle('#454545', '#ffffff', 'right'),
-                display_groups(['舘', '', '露']),
-                triangle('#454545', '#ffffff', 'right'),
-                display_groups(['usual1', 'usual2', 'usual3', 'usual4']),
-                triangle('#454545', '#ffffff', 'right'),
+                display_groups(['舘', '', '露'], bg='#ffffff'),
+                triangle('#ffffff', '#454545', 'right'),
+                display_groups(['usual1', 'usual2', 'usual3', 'usual4'], hide_unused=True, bg='#454545'),
+                triangle('#454545', '#000000', 'right'),
                 # widget.Spacer(length=20),
                 widget.CurrentLayoutIcon( scale=0.8, padding=20 ),
                 # widget.WindowCount(font='UbuntuMono NF Bold'),
