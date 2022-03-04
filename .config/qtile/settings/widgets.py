@@ -16,6 +16,7 @@ def triangle(fg='#ffffff', bg='#000000', direction='left'):
         triangle = ''
     elif direction == 'right':
         triangle = ''
+        # 
     return widget.TextBox(
         text=triangle,
         font='JetBrainsMono Nerd Font',
@@ -25,35 +26,50 @@ def triangle(fg='#ffffff', bg='#000000', direction='left'):
         foreground=fg
     )
 
+def display_groups(visible=[], hide_unused=False, fg='#bbbbbb', bg='#000000', highlight='#ffffff', active='#bbbbbb', inactive='#000000'):
+    return widget.GroupBox(
+        # ~~ Frame ~~
+        # Text
+        font='FreeSans', # This keep the icons where it goes
+        fontsize=28,
+        margin=10,
+        margin_y=2.4,
+        margin_x=0,
+        spacing=None,
+        center_aligned=True,
+        # Selector
+        highlight_method='line',
+        padding_y=5,
+        padding_x=10,
+        borderwidth=3,
+        # ~~ Color ~~
+            background=bg,
+            # Text
+            this_current_screen_border='#0025a0',
+            this_screen_border='#0025a0',
+            other_current_screen_border='#800015',
+            other_screen_border='#800015',
+            block_highlight_text_color=fg,
+            active=active,
+            inactive=inactive,
+            # Selector
+            highlight_color=highlight,
+        # ~~ Extra ~~
+        disable_drag=True,
+        visible_groups=visible,
+        hide_unused=hide_unused
+    )
+
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(
-                    # ~~ Frame ~~
-                    # Text
-                    font='FreeSans', # This keep the icons where it goes
-                    fontsize=28,
-                    margin=10,
-                    margin_y=2.4,
-                    margin_x=0,
-                    spacing=None,
-                    # Selector
-                    highlight_method='line',
-                    padding_y=5,
-                    padding_x=10,
-                    borderwidth=0,
-                    # ~~ Color ~~
-                    # Text
-                    block_highlight_text_color='#ffffff',
-                    active='#bbbbbb',
-                    # Selector
-                    highlight_color='#0055ff',
-                    # ~~ Extra ~~
-                    disable_drag=True,
-
-                ),
-                # triangle('#454545', '#ffffff', 'right'),
+                display_groups(['ﲋ', '', ''], bg='#454545', highlight='#454545'),
+                triangle('#454545', '#ffffff', 'right'),
+                display_groups(['舘', '', '露'], bg='#ffffff', highlight='#ffffff'),
+                triangle('#ffffff', '#454545', 'right'),
+                display_groups(['usual1', 'usual2', 'usual3', 'usual4'], hide_unused=True, bg='#454545', highlight='#454545'),
+                triangle('#454545', '#000000', 'right'),
                 # widget.Spacer(length=20),
                 widget.CurrentLayoutIcon( scale=0.8, padding=20 ),
                 # widget.WindowCount(font='UbuntuMono NF Bold'),

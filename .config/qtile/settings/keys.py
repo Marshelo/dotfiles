@@ -10,7 +10,7 @@ from libqtile import extension
 from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
 
-from .groups import groups, videoG, radioG, boardG
+from .groups import groups, separator
 
 # If something happend, see the default commands here
 # https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -161,39 +161,42 @@ keys = [
 
     Key([mod], 'F4', lazy.spawn('arandr')),
 ]
+# cambiar nombre variable actual_key a current_key
 
-firstNums = 4 # Just until 9 and not negative numbers
-groupKeys = 'qwer' # Leave empty to use only numbers or assign letters to use them for the group's shortcuts.
-# Whit this loop you can assign a shortcut automatically for each group with letters
-# The first 8 shortcut are so confortable with {1, 2, 3, 4, q, w, e, r}.
+first_nums = 3
+group_keys = 'qwe'
+common_first_nums = 1
+common_group_keys = 'r'
 sep = 0
 for i, group in enumerate(groups):
-    actual_key = ''
+
+    current_key = ''
     ii = i - sep
     # the ii var back the i value to his natural course after adding a separator
-    # because the separator is actually another group but I skip it whit this if statement below
-    # to don't add any shortcut to it.
-    if group.name == 'separator':
+    # because the separator is actually another group but I skip it whit this if
+    # statement below to don't add any shortcut to it.
+    if group.label == separator:
         sep += 1
         continue
 
-    if ii < firstNums:
-        actual_key = str(i + 1)
-    elif ii < firstNums + len(groupKeys):
-        actual_key = groupKeys[ii - 4]
-    elif firstNums + len(groupKeys) - 1 < ii < 9 + len(groupKeys):
-        actual_key = str(ii - len(groupKeys) + 1)
-    elif ii == 9 + len(groupKeys):
-        actual_key = '0'
+    if sep < 2:
+        if ii < first_nums:
+            current_key = str(ii + 1)
+        elif ii < first_nums + len(group_keys):
+            current_key = group_keys[ii - first_nums]
+    if sep == 2:
+        if ii - first_nums - len(group_keys) < common_first_nums:
+            current_key = str(ii - len(group_keys) + 1)
+        elif ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys):
+            current_key = common_group_keys[ii - first_nums - len(group_keys) - common_first_nums]
+            pass
+    if sep == 3:
+        if ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys) + 9:
+            current_key = str(ii - (len(group_keys) + len(common_group_keys)) + 1)
     
-    keys.extend([
-        Key([mod], actual_key, lazy.group[group.name].toscreen()),
-        Key([mod, 'shift'], actual_key, lazy.window.togroup(group.name))
-    ])
+    if not current_key == '':
+        keys.extend([
+            Key([mod], current_key, lazy.group[group.name].toscreen()),
+            Key([mod, 'shift'], current_key, lazy.window.togroup(group.name))
+        ])
 
-keys.extend([
-        KeyChord([mod], 'm', [
-            Key([], 'v', lazy.group[videoG].toscreen()),
-            Key([], 'a', lazy.group[radioG].toscreen()),
-        ])  
-    ])
