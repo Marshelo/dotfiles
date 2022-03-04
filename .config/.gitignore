@@ -9,6 +9,7 @@
 !fish/
 !alacritty
 !ranger
+!picom
 
 # And files
 !cadaArch.txt
