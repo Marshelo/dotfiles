@@ -8,6 +8,7 @@
 !qtile/
 !fish/
 !alacritty
+!ranger
 
 # And files
 !cadaArch.txt
