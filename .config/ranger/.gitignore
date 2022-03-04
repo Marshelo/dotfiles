@@ -1,0 +1,7 @@
+# Ignore all
+/*
+!.gitignore
+
+# Except
+!rc.conf
+!install_plugins.sh
