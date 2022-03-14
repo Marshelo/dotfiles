@@ -1,11 +1,23 @@
 # Defined in /usr/share/fish/functions/fish_greeting.fish @ line 1
 function fish_greeting
     if not set -q fish_greeting
-        set spaces ''
-        for i in (seq 1 (math 7 - (string length $USER)))
-            set spaces "$spaces "
+        set option (random 1 6)
+        switch $option
+            case 1
+                toilet "Welcome" -w 28 -f pagga -F border | lolcat
+            case 2
+                timeout --foreground 2s cmatrix
+            case 3
+                sl -ledw3
+                clear
+            case 4
+                timeout --foreground 2s asciiquarium
+            case 5
+                sl -ew3
+                clear
+            case 6
+                cowthink "???"
         end
-        toilet "Welcome$USER$spaces$spaces" -w 28 -f pagga -F border | lolcat
     end
 
   if set -q fish_private_mode
