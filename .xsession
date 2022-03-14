@@ -32,6 +32,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
  unset f
 fi
 
+# Some shortcuts
+sxhkd &
 # Set the 100% of brightness
 brightnessctl set 100% &
 # Image compositor
@@ -52,11 +54,11 @@ xrandr --output eDP1 --primary --mode 1366x768 --pos 0x768 --rotate normal --out
 feh --bg-scale ~/Wallpapers/wallpaper2.jpg &
 
 # Keyboard layout
-setxkbmap es && xmodmap ~/.MyKeys &
+setxkbmap es
+xmodmap ~/.MyKeys &
 
 # # Automount devices
 # udiskie -t &
-
 
 # Not enough? Visit this GitHub repository with more:
 # https://github.com/antoniosarosi/dotfiles/tree/83fb32e60921a879cfab717553f8f016e0145d2b

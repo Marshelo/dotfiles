@@ -1,0 +1,6 @@
+control + shift + Escape
+    alacritty -e htop
+
+# Toggle keyboard layout
+alt + shift # Esta combinación de teclas no es detectada
+    bash /home/shelo/.config/sxhkd/scripts/togglekeyboard.sh
