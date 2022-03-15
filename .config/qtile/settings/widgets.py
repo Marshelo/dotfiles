@@ -140,31 +140,15 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(
-                    # ~~ Frame ~~
-                    # Text
-                    font='FreeSans', # This keep the icons where it goes
-                    fontsize=28,
-                    margin=10,
-                    margin_y=2.4,
-                    margin_x=0,
-                    spacing=None,
-                    # Selector
-                    highlight_method='line',
-                    padding_y=5,
-                    padding_x=10,
-                    borderwidth=0,
-                    # ~~ Color ~~
-                    # Text
-                    block_highlight_text_color='#ffffff',
-                    active='#bbbbbb',
-                    # Selector
-                    highlight_color='#0055ff',
-                    # ~~ Extra ~~
-                    disable_drag=True,
-
-                ),
+                display_groups([space1, space2, space3], bg='#454545', highlight='#454545'),
+                triangle('#454545', '#ffffff', 'right'),
+                display_groups([space4, space5, space6], bg='#ffffff', highlight='#ffffff'),
+                triangle('#ffffff', '#454545', 'right'),
+                display_groups(['usual1', 'usual2', 'usual3', 'usual4'], hide_unused=True, bg='#454545', highlight='#454545'),
+                triangle('#454545', '#000000', 'right'),
+                # widget.Spacer(length=20),
                 widget.CurrentLayoutIcon( scale=0.8, padding=20 ),
+                # widget.WindowCount(font='UbuntuMono NF Bold'),
                 widget.Prompt(
                     font='JetBrainsMono Nerd Font',
                     fontsize=15,
@@ -173,6 +157,7 @@ screens = [
                     foreground='#ffffff',
                     cursor_color='#ffffff',
                     background='#222222',
+                    #fontshadow='#000000',
                     cursorblink=0.3,
                     ignore_dups_history=True,
                     record_history=False,
@@ -184,11 +169,16 @@ screens = [
                     padding=100,
                     max_chars=40
                 ),
+                # widget.Spacer(length=51),
+                # widget.Spacer(),
                 widget.Spacer(length=10),
+                # widget.Wlan(),
+                # widget.Net(),
                 widget.TextBox(
                     text='',
                     font='sans',
                     fontsize=20,
+                    # background='#dddddd',
                 ),
                 widget.KeyboardLayout(
                     font='UbuntuMono Nerd Font'
