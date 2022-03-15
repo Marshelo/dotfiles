@@ -1,6 +1,6 @@
 from libqtile import bar, widget
 from libqtile.config import Screen
-
+from .groups import space1, space2, space3, space4, space5, space6
 
 widget_defaults = dict(
     font='JetBrainsMono Nerd Font',
@@ -64,9 +64,9 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                display_groups(['ﲋ', '', ''], bg='#454545', highlight='#454545'),
+                display_groups([space1, space2, space3], bg='#454545', highlight='#454545'),
                 triangle('#454545', '#ffffff', 'right'),
-                display_groups(['舘', '', '露'], bg='#ffffff', highlight='#ffffff'),
+                display_groups([space4, space5, space6], bg='#ffffff', highlight='#ffffff'),
                 triangle('#ffffff', '#454545', 'right'),
                 display_groups(['usual1', 'usual2', 'usual3', 'usual4'], hide_unused=True, bg='#454545', highlight='#454545'),
                 triangle('#454545', '#000000', 'right'),

@@ -14,9 +14,15 @@ set autoindent
 set laststatus=2
 set bg=dark
 
+set nocompatible
+filetype plugin on
+syntax on
+
 call plug#begin('~/.vim/plugged')
 
 " ## Plugins ##
+" For bosses like me B)
+Plug 'vimwiki/vimwiki'
 " Syntax
 Plug 'sheerun/vim-polyglot' "A wide programing languaje syntax support
 
