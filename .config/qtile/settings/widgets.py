@@ -62,7 +62,7 @@ def display_groups(visible=[], hide_unused=False, fg='#bbbbbb', bg='#000000', hi
 
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 display_groups([space1, space2, space3], bg='#454545', highlight='#454545'),
                 triangle('#454545', '#ffffff', 'right'),
