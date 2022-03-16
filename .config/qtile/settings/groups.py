@@ -12,28 +12,19 @@ separator = '|'
 # musicG = ' ' #  
 # groups = [Group(i) for i in [' ', boardG, ' ', ' ', ' ', videoG, radioG, musicG]]
 
-
-space1 = ''
-space2 = '卑'
-space3 = 'ﱢ'
-space4 = 'ﴯ'
-space5 = ''
-space6 = '露'
-space7 = ''
-space8 = ''
-space9 = '爫'
+space = ['ﲋ', '', '', '', '卑', 'ﱢ', '', '', '爫' ]
 groups = [
-    Group(space1), # Common groups
-    Group(space2),
-    Group(space3),
+    Group(space[0]), # Common groups
+    Group(space[1]),
+    Group(space[2]),
     Group(name='sep1', label=separator),
-    Group(space4, layout='max'), # Hot groups area
-    Group(space5, layout='max'),
+    Group(space[3], layout='max'), # Hot groups area
+    Group(space[4]),
+    Group(space[5], layout='max'),
     Group(name='sep2', label=separator),
-    Group(space6), # Secondaries necessities groups
-    Group(space7),
-    Group(space8),
-    Group(space9),
+    Group(space[6]), # Secondaries necessities groups
+    Group(space[7]),
+    Group(space[8]),
 ]
 
 # more icons:    

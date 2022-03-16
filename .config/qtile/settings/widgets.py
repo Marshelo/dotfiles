@@ -1,6 +1,6 @@
 from libqtile import bar, widget
 from libqtile.config import Screen
-from .groups import space1, space2, space3, space4, space5, space6, space7, space8, space9
+from .groups import space
 
 widget_defaults = dict(
     font='JetBrainsMono Nerd Font',
@@ -64,11 +64,11 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                display_groups([space1, space2, space3], bg='#454545', highlight='#454545'),
+                display_groups([space[0], space[1], space[2]], bg='#454545', highlight='#454545'),
                 triangle('#454545', '#ffffff', 'right'),
-                display_groups([space4, space5, space6], bg='#ffffff', hide_unused=False, highlight='#ffffff'),
+                display_groups([space[3], space[4], space[5]], bg='#ffffff', hide_unused=True, highlight='#ffffff'),
                 triangle('#ffffff', '#454545', 'right'),
-                display_groups([space7, space8, space9], hide_unused=False, bg='#454545', highlight='#454545'),
+                display_groups([space[6], space[7], space[8]], hide_unused=True, bg='#454545', highlight='#454545'),
                 triangle('#454545', '#000000', 'right'),
                 # widget.Spacer(length=20),
                 widget.CurrentLayoutIcon( scale=0.8, padding=20 ),
@@ -140,11 +140,11 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                display_groups([space1, space2, space3], bg='#454545', highlight='#454545'),
+                display_groups([space[0], space[1], space[2]], bg='#454545', highlight='#454545'),
                 triangle('#454545', '#ffffff', 'right'),
-                display_groups([space4, space5, space6], bg='#ffffff', highlight='#ffffff'),
+                display_groups([space[3], space[4], space[5]], bg='#ffffff', hide_unused=True, highlight='#ffffff'),
                 triangle('#ffffff', '#454545', 'right'),
-                display_groups(['usual1', 'usual2', 'usual3', 'usual4'], hide_unused=True, bg='#454545', highlight='#454545'),
+                display_groups([space[6], space[7], space[8]], hide_unused=True, bg='#454545', highlight='#454545'),
                 triangle('#454545', '#000000', 'right'),
                 # widget.Spacer(length=20),
                 widget.CurrentLayoutIcon( scale=0.8, padding=20 ),
@@ -171,6 +171,7 @@ screens = [
                 ),
                 # widget.Spacer(length=51),
                 # widget.Spacer(),
+                widget.Systray(padding=5,),
                 widget.Spacer(length=10),
                 # widget.Wlan(),
                 # widget.Net(),
