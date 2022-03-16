@@ -163,10 +163,9 @@ keys = [
 ]
 # cambiar nombre variable actual_key a current_key
 
+
 first_nums = 3
 group_keys = 'qwe'
-common_first_nums = 1
-common_group_keys = 'r'
 sep = 0
 for i, group in enumerate(groups):
 
@@ -177,26 +176,60 @@ for i, group in enumerate(groups):
     # statement below to don't add any shortcut to it.
     if group.label == separator:
         sep += 1
+        # if sep == 2:
+        #     break
         continue
 
-    if sep < 2:
+    if sep < 3:
         if ii < first_nums:
-            current_key = str(ii + 1)
+            current_key = str(i + 1)
         elif ii < first_nums + len(group_keys):
-            current_key = group_keys[ii - first_nums]
-    if sep == 2:
-        if ii - first_nums - len(group_keys) < common_first_nums:
+            current_key = group_keys[ii - len(group_keys)]
+        elif first_nums + len(group_keys) - 1 < ii < 9 + len(group_keys):
             current_key = str(ii - len(group_keys) + 1)
-        elif ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys):
-            current_key = common_group_keys[ii - first_nums - len(group_keys) - common_first_nums]
-            pass
-    if sep == 3:
-        if ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys) + 9:
-            current_key = str(ii - (len(group_keys) + len(common_group_keys)) + 1)
+        elif ii == 9 + len(group_keys):
+            current_key = '0'
     
     if not current_key == '':
         keys.extend([
             Key([mod], current_key, lazy.group[group.name].toscreen()),
             Key([mod, 'shift'], current_key, lazy.window.togroup(group.name))
         ])
+
+# first_nums = 3
+# group_keys = 'qwe'
+# common_first_nums = 1
+# common_group_keys = 'r'
+# sep = 0
+# for i, group in enumerate(groups):
+
+#     current_key = ''
+#     ii = i - sep
+#     # the ii var back the i value to his natural course after adding a separator
+#     # because the separator is actually another group but I skip it whit this if
+#     # statement below to don't add any shortcut to it.
+#     if group.label == separator:
+#         sep += 1
+#         continue
+
+#     if sep < 2:
+#         if ii < first_nums:
+#             current_key = str(ii + 1)
+#         elif ii < first_nums + len(group_keys):
+#             current_key = group_keys[ii - first_nums]
+#     if sep == 2:
+#         if ii - first_nums - len(group_keys) < common_first_nums:
+#             current_key = str(ii - len(group_keys) + 1)
+#         elif ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys):
+#             current_key = common_group_keys[ii - first_nums - len(group_keys) - common_first_nums]
+#             pass
+#     if sep == 3:
+#         if ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys) + 9:
+#             current_key = str(ii - (len(group_keys) + len(common_group_keys)) + 1)
+    
+#     if not current_key == '':
+#         keys.extend([
+#             Key([mod], current_key, lazy.group[group.name].toscreen()),
+#             Key([mod, 'shift'], current_key, lazy.window.togroup(group.name))
+#         ])
 

@@ -12,26 +12,29 @@ separator = '|'
 # musicG = ' ' #  
 # groups = [Group(i) for i in [' ', boardG, ' ', ' ', ' ', videoG, radioG, musicG]]
 
-space1 = 'ﲋ'
-space2 = ''
-space3 = ''
-space4 = '舘'
-space5 = ''
+
+space1 = ''
+space2 = '卑'
+space3 = 'ﱢ'
+space4 = 'ﴯ'
+space5 = ''
 space6 = '露'
+space7 = ''
+space8 = ''
+space9 = '爫'
 groups = [
-    Group(space1), # This icon is bugged
+    Group(space1), # Common groups
     Group(space2),
     Group(space3),
     Group(name='sep1', label=separator),
-    Group(space4),
+    Group(space4, layout='max'), # Hot groups area
     Group(space5, layout='max'),
-    Group(space6, layout='max'),
     Group(name='sep2', label=separator),
-    Group(name='usual1', label=''),
-    Group(name='usual2', label=''),
-    Group(name='usual3', label=''),
-    Group(name='usual4', label=''),
+    Group(space6), # Secondaries necessities groups
+    Group(space7),
+    Group(space8),
+    Group(space9),
 ]
 
 # more icons:    
-# ' ', '', '', '', '', '', '', '', '', '', '', '', '', ''. '', ''
+# 'ﲋ', '', '', '舘','', '露', '', '', '', '', '', '', '', '', '', '', ''. '', '', ''
