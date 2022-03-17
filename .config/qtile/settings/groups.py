@@ -12,7 +12,10 @@ separator = '|'
 # musicG = ' ' #  
 # groups = [Group(i) for i in [' ', boardG, ' ', ' ', ' ', videoG, radioG, musicG]]
 
-space = ['ﲋ', '', '', '', '卑', 'ﱢ', '', '', '爫' ]
+space = [
+    'ﲋ', '', '',
+    '', '卑', 'ﱢ',
+    '', '', '爫',]
 groups = [
     Group(space[0]), # Common groups
     Group(space[1]),
