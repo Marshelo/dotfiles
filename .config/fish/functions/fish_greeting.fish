@@ -1,12 +1,14 @@
 # Defined in /usr/share/fish/functions/fish_greeting.fish @ line 1
 function fish_greeting
     if not set -q fish_greeting
-        set option (random 1 2)
+        set option (random 1 3)
         switch $option
             case 1
                 toilet "Welcome" -w 28 -f pagga -F border | lolcat
             case 2
                 cowthink "???"
+            case 3
+                toilet "Welcome" -w 28 -f pagga -F border
         end
     end
 

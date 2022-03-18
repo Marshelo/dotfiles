@@ -10,6 +10,18 @@ layout_conf = {
 }
 
 layouts = [
+    layout.Columns(
+        border_focus='#ffffff',
+        border_normal='#000000',
+        border_focus_stack='#00faaa',
+        border_width=2,
+        margin=0,
+        fair=False,
+        margin_on_single=False,
+        grow_amount=5, # Default: 10
+        wrap_focus_columns=False,
+        wrap_focus_rows=False
+        ),
     layout.MonadTall(
         border_focus='#ffffff',
         border_normal='#000000',
@@ -19,18 +31,6 @@ layouts = [
         margin=0,
         single_margin=0,
         single_border_width=0
-        ),
-    layout.Columns(
-        border_focus='#ffffff',
-        border_normal='#000000',
-        border_focus_stack='#00faaa',
-        border_width=2,
-        margin=0,
-        fair=True,
-        margin_on_single=False,
-        grow_amount=5, # Default: 10
-        wrap_focus_columns=False,
-        wrap_focus_rows=False
         ),
     layout.MonadWide(
         border_focus='#ffffff',

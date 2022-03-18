@@ -14,14 +14,14 @@ separator = '|'
 
 space = [
     'ﲋ', '', '',
-    '', '卑', 'ﱢ',
+    '卑', '', 'ﱢ',
     '', '', '爫',]
 groups = [
     Group(space[0]), # Common groups
     Group(space[1]),
     Group(space[2]),
     Group(name='sep1', label=separator),
-    Group(space[3], layout='max'), # Hot groups area
+    Group(space[3]), # Hot groups area
     Group(space[4]),
     Group(space[5], layout='max'),
     Group(name='sep2', label=separator),

@@ -66,14 +66,14 @@ keys = [
     Key([mod, 'shift'], right, lazy.layout.shuffle_right()),
 
     # Grow windows
-    Key([mod, 'control', 'shift'], leftVim, lazy.layout.grow_left()),
-    Key([mod, 'control', 'shift'], rightVim, lazy.layout.grow_right()),
+    Key([mod, 'control', 'shift'], left, lazy.layout.grow_left()),
+    Key([mod, 'control', 'shift'], right, lazy.layout.grow_right()),
     
-    Key([mod, 'control', 'shift'], downVim,
+    Key([mod, 'control', 'shift'], down,
         lazy.layout.grow_down().when(layout='columns'),
         lazy.layout.shrink().when(layout='monadtall'),
         lazy.layout.shrink().when(layout='monadwide')),
-    Key([mod, 'control', 'shift'], upVim,
+    Key([mod, 'control', 'shift'], up,
         lazy.layout.grow_up().when(layout='columns'),
         lazy.layout.grow().when(layout='monadtall'),
         lazy.layout.grow().when(layout='monadwide')),
