@@ -39,7 +39,9 @@ layouts = [
         border_width=2,
         ratio=0.55,
         single_margin=0,
-        single_border_width=0
+        single_border_width=0,
+        min_ratio=0.10,
+        max_ratio=0.90
     ),
     layout.Max(),
 

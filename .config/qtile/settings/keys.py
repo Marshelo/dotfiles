@@ -7,10 +7,13 @@
 
 
 from libqtile import extension
-from libqtile.config import Key, KeyChord
+from libqtile.config import Key, KeyChord, Screen
 from libqtile.command import lazy
+from libqtile.backend.base import Window
 
 from .groups import groups, separator
+
+browser = 'brave'
 
 # If something happend, see the default commands here
 # https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -68,7 +71,7 @@ keys = [
     # Grow windows
     Key([mod, 'control', 'shift'], left, lazy.layout.grow_left()),
     Key([mod, 'control', 'shift'], right, lazy.layout.grow_right()),
-    
+
     Key([mod, 'control', 'shift'], down,
         lazy.layout.grow_down().when(layout='columns'),
         lazy.layout.shrink().when(layout='monadtall'),
@@ -80,11 +83,11 @@ keys = [
 
     # More
     Key([mod], 'F11', lazy.window.toggle_fullscreen()),
-        
+
     Key([mod, 'control'], 'space', lazy.layout.flip()),
     Key([mod, 'control'], 'n', lazy.layout.normalize()),
 
-    Key([mod, 'shift'], 'Return', lazy.layout.toggle_split()),
+    Key([mod, 'shift'], 'space', lazy.layout.toggle_split()),
 
     Key([mod], 'Tab', lazy.next_layout()),
     Key([mod, 'shift'], 'Tab', lazy.prev_layout()),
@@ -110,17 +113,33 @@ keys = [
     Key([], 'Print', lazy.spawn('scrot -s')),
     Key(['shift'], 'Print', lazy.spawn('scrot')),
 
-    # ------------ Open Apps ------------ #
+    # ------------ Apps ------------ #
 
+    # Spotify
+    Key([mod, alt], 's',
+        lazy.spawn('playerctl play-pause -p spotify')),
+    Key(['shift'], 'XF86AudioPlay',
+        lazy.spawn('playerctl play-pause -p spotify')),
+
+    Key(['shift'], 'XF86AudioPrev',
+        lazy.spawn('playerctl previous -p spotify')),
+    Key(['shift'], 'XF86AudioNext',
+        lazy.spawn('playerctl next -p spotify')),
+
+    # ~~ Open ~~
     # Browser
-    Key([mod], 'b', lazy.spawn('firefox')),
+    # Key([mod], 'b', lazy.spawn(browser)),
     Key([mod, 'shift'], 'b', lazy.spawn('qutebrowser')),
+
+    # Notion
+    Key([mod], 'n', lazy.spawn('notion-snap')),
 
     # Terminal
     Key([mod], 'Return', lazy.spawn(terminal)),
 
     # File manager
     Key([mod], 't', lazy.spawn('thunar')),
+
 
     # ------------ ?? ------------ #
 
@@ -138,20 +157,13 @@ keys = [
     Key([], 'XF86AudioMute',
         lazy.spawn('pactl set-sink-mute @DEFAULT_SINK@ toggle')),
 
-    # Audio control
+    # Player control
     Key([], 'XF86AudioPlay',
         lazy.spawn('playerctl play-pause')),
     Key([], 'XF86AudioPrev',
         lazy.spawn('playerctl previous')),
     Key([], 'XF86AudioNext',
         lazy.spawn('playerctl next')),
-
-    Key(['shift'], 'XF86AudioPlay',
-        lazy.spawn('playerctl play-pause -p spotify')),
-    Key(['shift'], 'XF86AudioPrev',
-        lazy.spawn('playerctl previous -p spotify')),
-    Key(['shift'], 'XF86AudioNext',
-        lazy.spawn('playerctl next -p spotify')),
 
     # Brightness
     Key([], 'XF86MonBrightnessUp',

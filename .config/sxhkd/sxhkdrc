@@ -1,6 +1,17 @@
 control + shift + Escape
     alacritty -e htop
 
-# Toggle keyboard layout
-alt + shift # Esta combinación de teclas no es detectada
+# Reload wallpaper
+super + control + r
+    feh --bg-scale ~/Wallpapers/wallpaper7.jpg &
+
+# Toggle keyboard layout  # Esta combinación de teclas no es detectada
+alt + shift
     bash /home/shelo/.config/sxhkd/scripts/togglekeyboard.sh
+
+# Browser
+super + b
+    brave
+# Browser in private mode:
+super + i ; super + b
+    brave --incognito
