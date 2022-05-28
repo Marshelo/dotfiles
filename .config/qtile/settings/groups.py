@@ -6,7 +6,7 @@ from libqtile.config import Group, Key, KeyChord
 separator = '|'
 
 # G of Group
-# boardG =  #    舘 
+# boardG =  #     
 # videoG =  # 
 # radioG =  # 鷺 露 蓼
 # musicG = ' ' #  
@@ -14,9 +14,9 @@ separator = '|'
 #      
 #           
 space = [
-    'ﲋ', '', '',
-    '卑', '', 'ﱢ',
-    '', '', '爫',]
+    '', '', '',
+    '', '', '',
+    '', '', '',]
 groups = [
     Group(space[0]), # Common groups
     Group(space[1]),
@@ -31,5 +31,6 @@ groups = [
     Group(space[8]),
 ]
 
-# more icons:    
+# more icons:   
 # 'ﲋ', '', '', '舘','', '露', '', '', '', '', '', '', '', '', '', '', ''. '', '', ''
+# Figures:  '', 'ﱢ', '卑', '', '', '爫',

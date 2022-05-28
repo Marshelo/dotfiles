@@ -64,9 +64,9 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                display_groups([space[0], space[1], space[2]], bg='#454545', highlight='#454545'),
+                display_groups([space[0], space[1], space[2]], bg='#454545', highlight='#454545', hide_unused=True),
                 triangle('#454545', '#ffffff', 'right'),
-                display_groups([space[3], space[4], space[5]], bg='#ffffff', hide_unused=True, highlight='#ffffff'),
+                display_groups([space[3], space[4], space[5]], bg='#ffffff', highlight='#ffffff'),
                 triangle('#ffffff', '#454545', 'right'),
                 display_groups([space[6], space[7], space[8]], hide_unused=True, bg='#454545', highlight='#454545'),
                 triangle('#454545', '#000000', 'right'),

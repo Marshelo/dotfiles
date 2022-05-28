@@ -46,15 +46,17 @@ picom --experimental-backend -b &
 # # Tele arriba
 # xrandr --output eDP1 --primary --mode 1366x768 --pos 277x1080 --rotate normal --output DP1 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off &
 
-# Pantalla chica
-xrandr --output eDP1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP1 --off --output HDMI1 --mode 1360x768 --pos 6x0 --rotate normal --output VIRTUAL1 --off
-
+# Pantalla chica arriba
+# xrandr --output eDP1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP1 --off --output HDMI1 --mode 1360x768 --pos 6x0 --rotate normal --output VIRTUAL1 --off
+# Pantalla chica izquierda
+xrandr --output eDP1 --primary --mode 1366x768 --pos 1360x0 --rotate normal --output DP1 --off --output HDMI1 --mode 1360x768 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 
 # Wallpaper
 feh --bg-scale ~/Wallpapers/wallpaper7.jpg &
 
 # Keyboard layout
-setxkbmap es && xmodmap ~/.MyKeys &
+setxkbmap es &
+xmodmap ~/.MyKeys &
 
 # # Automount devices
 # udiskie -t &
