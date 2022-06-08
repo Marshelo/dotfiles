@@ -53,14 +53,16 @@ rightVim = 'l'
 terminal = 'alacritty'
 
 keys = [
-    # ------------ Windows ------------ #
+    # ------------ WINDOWS ------------ #
+
+    Key([mod], 'space', lazy.screen.toggle_group()),
 
     # Switch between windows
     Key([mod], left, lazy.layout.left()),
     Key([mod], down, lazy.layout.down()),
     Key([mod], up, lazy.layout.up()),
     Key([mod], right, lazy.layout.right()),
-    Key([mod], 'space', lazy.layout.next()),
+    # Key([mod], 'space', lazy.layout.next()),
 
     # Move windows
     Key([mod, 'shift'], left, lazy.layout.shuffle_left()),
@@ -98,7 +100,7 @@ keys = [
     Key([mod], 'F5', lazy.spawn('qtile cmd-obj -o cmd -f restart')), # Change "restart" to "reload_config" if you have the qtile git version.
     Key([mod], 'Delete', lazy.shutdown()),
 
-    # ------------ Desktop Apps ------------ #
+    # ------------ DESKTOP APPS ------------ #
 
     # Menu
     Key([mod], 'o', lazy.spawn('rofi -modi drun -show drun')),
@@ -113,7 +115,7 @@ keys = [
     Key([], 'Print', lazy.spawn('scrot -s')),
     Key(['shift'], 'Print', lazy.spawn('scrot')),
 
-    # ------------ Apps ------------ #
+    # ------------ APPS ------------ #
 
     # Spotify
     Key([mod, alt], 's',
