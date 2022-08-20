@@ -33,7 +33,7 @@ function fish_prompt
 
         set_color normal
         set_color $retc
-        echo -n ' '
+        echo -n ' ▶'
         # set_color -o green
         # echo -n '['
         set_color brwhite
@@ -41,7 +41,7 @@ function fish_prompt
         # and echo -n "$field_name "
         set_color $retc
         echo -n "$field_value"
-        echo -n ""
+        echo -n ""
         # set_color -o green
         # echo -n ']'
     end
