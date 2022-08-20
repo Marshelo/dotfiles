@@ -7,6 +7,7 @@
 
 
 from libqtile import extension
+import libqtile
 from libqtile.config import Key, KeyChord, Screen
 from libqtile.command import lazy
 from libqtile.backend.base import Window
@@ -52,10 +53,14 @@ rightVim = 'l'
 
 terminal = 'alacritty'
 
+# from libqtile.command.client import InteractiveCommandClient
+# c = InteractiveCommandClient()
+
 keys = [
     # ------------ WINDOWS ------------ #
 
     Key([mod], 'space', lazy.screen.toggle_group()),
+    # Key([mod], 'space', c.group["sep1"].to_screen(0)),
 
     # Switch between windows
     Key([mod], left, lazy.layout.left()),
@@ -203,7 +208,7 @@ for i, group in enumerate(groups):
             current_key = str(ii - len(group_keys) + 1)
         elif ii == 9 + len(group_keys):
             current_key = '0'
-    
+
     if not current_key == '':
         keys.extend([
             Key([mod], current_key, lazy.group[group.name].toscreen()),
