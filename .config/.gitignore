@@ -1,4 +1,4 @@
-# Ignore everything 
+# Ignore everything
 /*
 # Except
 !.gitignore
@@ -15,6 +15,5 @@
 !kitty
 
 # And files
-!every-arch.md
 !starship.toml
 
