@@ -12,7 +12,9 @@
 !picom
 !qutebrowser
 !sxhkd
+!kitty
 
 # And files
 !cadaArch.txt
+!starship.toml
 

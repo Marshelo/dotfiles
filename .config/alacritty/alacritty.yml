@@ -27,8 +27,8 @@ live_config_reload: true
 
 window:
   padding:
-   x: 7
-   y: 7
+   x: 3
+   y: 0
 
   # Window decorations
   #
@@ -39,9 +39,9 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: full
+  decorations: none
 
-  opacity: 0.97
+  opacity: 1
 
   title: Alacritty
   dynamic_title: true
@@ -52,12 +52,12 @@ window:
 
 scrolling:
   history: 10000
-  multiplier: 3
+  multiplier: 5
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font
-    style: Medium
+    family: JetBrainsMonoMedium Nerd Font
+    style: Bold
   bold:
     family: JetBrainsMono Nerd Font
     style: Bold
@@ -67,12 +67,52 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
-  size: 9.0
+  size: 8.5
+  # Sizes with no problems with nerd fonts: 8.5
   offset:
    x: 0
    y: 0
 
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
+
+# Personal palette
+colors:
+  primary:
+    background: '#231f2c'
+    # background: '#1d1f21'
+    foreground: '#ffffff'
+    # foreground: '#c5c8c6'
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  normal:
+    black:   '#1d1f21'
+    red:     '#FF6961'
+    green:   '#50EFA3'
+    yellow:  '#FCA17D'
+    blue:    '#638AFF'
+    magenta: '#A38DC9'
+    cyan:    '#86BBD8'
+    white:   '#F7FBFF'
+  bright:
+    black:   '#404040'
+    red:     '#ED0800'
+    green:   '#1CE815'
+    yellow:  '#ECEF50'
+    blue:    '#4169E1'
+    magenta: '#FF00FF'
+    cyan:    '#2BFFF1'
+    white:   '#ffffff'
+  dim:
+    black:   '#000000'
+    red:     '#864343'
+    green:   '#777c44'
+    yellow:  '#9e824c'
+    blue:    '#556a7d'
+    magenta: '#770737'
+    cyan:    '#098078'
+    white:   '#b0b0b0'
+
 
 # colors:
 #   primary:
@@ -142,39 +182,39 @@ draw_bold_text_with_bright_colors: false
 #     white:   '0xa6b3cc'
 
 
-# Argonaut theme
-colors:
-  # Default colors
-  primary:
-    background: '0x292C3E'
-    foreground: '0xEBEBEB'
+# # Argonaut theme
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x292C3E'
+#     foreground: '0xEBEBEB'
 
-  # Cursor colors
-  cursor:
-    text: '0xFF261E'
-    cursor: '0xEBEBEB'
+#   # Cursor colors
+#   cursor:
+#     text: '0xFF261E'
+#     cursor: '0xEBEBEB'
 
-  # Normal colors
-  normal:
-    black:   '0x0d0d0d'
-    red:     '0xFF301B'
-    green:   '0xA0E521'
-    yellow:  '0xFFC620'
-    blue:    '0x1BA6FA'
-    magenta: '0x8763B8'
-    cyan:    '0x21DEEF'
-    white:   '0xEBEBEB'
+#   # Normal colors
+#   normal:
+#     black:   '0x0d0d0d'
+#     red:     '0xFF301B'
+#     green:   '0xA0E521'
+#     yellow:  '0xFFC620'
+#     blue:    '0x1BA6FA'
+#     magenta: '0x8763B8'
+#     cyan:    '0x21DEEF'
+#     white:   '0xEBEBEB'
 
-  # Bright colors
-  bright:
-    black:   '0x6D7070'
-    red:     '0xFF4352'
-    green:   '0xB8E466'
-    yellow:  '0xFFD750'
-    blue:    '0x1BA6FA'
-    magenta: '0xA578EA'
-    cyan:    '0x73FBF1'
-    white:   '0xFEFEF8'
+#   # Bright colors
+#   bright:
+#     black:   '0x6D7070'
+#     red:     '0xFF4352'
+#     green:   '0xB8E466'
+#     yellow:  '0xFFD750'
+#     blue:    '0x1BA6FA'
+#     magenta: '0xA578EA'
+#     cyan:    '0x73FBF1'
+#     white:   '0xFEFEF8'
 
 # # Blood Moon theme
 # colors:
