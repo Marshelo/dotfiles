@@ -39,4 +39,9 @@ Respectively
 - `sudo chsh -s /usr/local/bin/fish` - Makes fish as default shell
 - `sudo pacman -S alacritty` - GPU acelereted term
 - `sudo pacman -S kitty` - GPU based term
+- Install kitty-cat and change the default themes folder from /bin/kitty-cat and put "~/.config/kitty/themes"
+```bash
+mkdir -p ~/installing || cd ~/installing
+git clone https://github.com/adi1090x/kitty-cat.git
+```
 
