@@ -51,7 +51,7 @@ downVim = 'j'
 upVim = 'k'
 rightVim = 'l'
 
-terminal = 'alacritty'
+terminal = 'kitty'
 
 # from libqtile.command.client import InteractiveCommandClient
 # c = InteractiveCommandClient()

@@ -1,16 +1,16 @@
 ## You can use this simbols:                 
 
 format = """
-[ ](bg: fg:white)\
-[ ](bg:white fg:black)\
-[](bg:cyan fg:white)\
+[ ](bg: fg:#ffffff)\
+[ ](bg:#ffffff fg:#000000)\
+[](bg:#86BBD8 fg:#ffffff)\
 $username\
-[](bg:#DA627D fg:cyan)\
+[](bg:#DA627D fg:#86BBD8)\
 $directory\
-[](bg:#FCA17D fg:#DA627D)\
+[](bg:#fc9369 fg:#DA627D)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
+[](fg:#fc9369 bg:#86BBD8)\
 [\
 $java\
 $lua\
@@ -43,12 +43,12 @@ $time\
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:cyan fg:black"
+style_user = "bg:#86BBD8 fg:#000000"
 style_root = "bg:cyan fg:red"
 format = '[$user]($style)'
 
 [directory]
-style = "bg:#DA627D"
+style = "bg:#DA627D fg:#ffffff"
 format = "[$path]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -69,51 +69,51 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#FCA17D"
-format = '[ $symbol$branch ]($style)'
+style = "bg:#fc9369 fg:#ffffff"
+format = '[ $symbol$branch]($style)'
 
 [git_status]
-style = "bg:#FCA17D"
+style = "bg:#fc9369 fg:#ffffff"
 format = '[$all_status$ahead_behind]($style)'
 
 # Languages
 [python]
 symbol = "🐍"
-style = "bg:#86BBD8"
+style = "bg:#86BBD8 fg:#ffffff"
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [java]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:#86BBD8 fg:#ffffff"
 format = '[$symbol ($version) ]($style)'
 
 [lua]
 symbol = "🌙 "
-style = "bg:#86BBD8"
+style = "bg:#86BBD8 fg:#ffffff"
 format = '[$symbol($version )]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#86BBD8"
+style = "bg:#86BBD8 fg:#ffffff"
 format = '[$symbol ($version) ]($style)'
 
 [c]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:#86BBD8 fg:#ffffff"
 format = '[$symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#86BBD8"
+style = "bg:#86BBD8 fg:#ffffff"
 format = '[$symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:#06969A"
+style = "bg:#06969A fg:#ffffff"
 format = '[$symbol $context ]($style) $path'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "bg:#33658A fg:#ffffff"
 format = '[$time]($style)'
