@@ -42,6 +42,6 @@ Respectively
 - Install kitty-cat and change the default themes folder from /bin/kitty-cat and put "~/.config/kitty/themes"
 ```bash
 mkdir -p ~/installing || cd ~/installing
-git clone https://github.com/adi1090x/kitty-cat.git
+git clone https://github.com/adi1090x/kitty-cat.git || bash install
 ```
 
