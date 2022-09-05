@@ -60,7 +60,7 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-"lab" = "ﭧ"
+"Lab" = " ﭧ "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = "  "
 # will not be replaced, because "Documents" was already substituted before.
@@ -68,24 +68,24 @@ truncation_symbol = "…/"
 # "Important  " = "  "
 
 [git_branch]
-symbol = ""
+symbol = " "
 style = "bg:#fc9369 fg:#ffffff"
-format = '[ $symbol$branch]($style)'
+format = '[$symbol$branch]($style)'
 
 [git_status]
 style = "bg:#fc9369 fg:#ffffff"
-format = '[$all_status$ahead_behind]($style)'
+format = '[ $all_status$ahead_behind]($style)'
 
 # Languages
 [python]
-symbol = "🐍"
+symbol = "🐍 "
 style = "bg:#86BBD8 fg:#ffffff"
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [java]
-symbol = " "
+symbol = "[ ](bg:#86BBD8 fg:#000000)"
 style = "bg:#86BBD8 fg:#ffffff"
-format = '[$symbol ($version) ]($style)'
+format = '[$symbol($version) ]($style)'
 
 [lua]
 symbol = "🌙 "
@@ -100,17 +100,17 @@ format = '[$symbol ($version) ]($style)'
 [c]
 symbol = " "
 style = "bg:#86BBD8 fg:#ffffff"
-format = '[$symbol ($version) ]($style)'
+format = '[$symbol($version) ]($style)'
 
 [rust]
-symbol = ""
+symbol = " "
 style = "bg:#86BBD8 fg:#ffffff"
-format = '[$symbol ($version) ]($style)'
+format = '[$symbol($version) ]($style)'
 
 [docker_context]
 symbol = " "
 style = "bg:#06969A fg:#ffffff"
-format = '[$symbol $context ]($style) $path'
+format = '[$symbol$context ]($style) $path'
 
 [time]
 disabled = false

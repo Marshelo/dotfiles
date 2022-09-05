@@ -108,10 +108,10 @@ keys = [
     # ------------ DESKTOP APPS ------------ #
 
     # Menu
-    Key([mod], 'o', lazy.spawn('rofi -modi drun -show drun')),
+    Key([mod], 'o', lazy.spawn('rofi -combi-modi window,drun,ssh -font "JetBrainsMono Nerd Font 15" -show drun -icon-theme "Papirus" -show-icons -theme "sidebar-v2"')),
     Key([mod, 'shift'], 'o', lazy.run_extension(extension.DmenuRun(
         dmenu_font='JetBrainsMono Nerd Font', dmenu_lines=4))),
-    Key([alt], 'Tab', lazy.spawn('rofi -show')),
+    Key([alt], 'Tab', lazy.spawn('rofi -combi-modi window,drun,ssh -font "JetBrainsMono Nerd Font 15" -show window -icon-theme "Papirus" -show-icons -theme "sidebar-v2"')),
 
     # Widget cmd line
     Key([mod], 'p', lazy.spawncmd()),
