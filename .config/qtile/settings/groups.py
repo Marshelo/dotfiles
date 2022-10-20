@@ -24,7 +24,7 @@ groups = [
     Group(name='sep1', label=separator),
     Group(space[3]), # Hot groups area
     Group(space[4]),
-    Group(space[5], layout='max'),
+    Group(space[5]),
     Group(name='sep2', label=separator),
     Group(space[6]), # Secondaries necessities groups
     Group(space[7]),
