@@ -1,0 +1,1 @@
+In this folder there are config files that you can manipulate easily, but also there important parts of the files that maybe it is not that easy to change.

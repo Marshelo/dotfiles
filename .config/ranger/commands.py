@@ -177,3 +177,10 @@ class fasd(Command):
         dirs = output.strip().split("\n")
         dirs.sort(reverse=True)  # Listed in ascending frecency
         return dirs
+
+class term(Command):
+    """:term
+    open a terminal in working directory
+    """
+    def execute(self):
+        self.fm.run('kitty', flags='f')

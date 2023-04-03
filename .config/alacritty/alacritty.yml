@@ -75,7 +75,7 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-# Personal palette
+# Mi Kitty palette
 colors:
   primary:
     background: '#231f2c'
@@ -87,21 +87,21 @@ colors:
     cursor: CellForeground
   normal:
     black:   '#1d1f21'
-    red:     '#FF6961'
-    green:   '#50EFA3'
-    yellow:  '#FCA17D'
-    blue:    '#638AFF'
-    magenta: '#A38DC9'
-    cyan:    '#86BBD8'
+    red:     '#d25252'
+    green:   '#c1df74'
+    yellow:  '#e1e48a'
+    blue:    '#8ab6d9'
+    magenta: '#efb5f7'
+    cyan:    '#dbf4ff'
     white:   '#F7FBFF'
   bright:
     black:   '#404040'
-    red:     '#ED0800'
-    green:   '#1CE815'
-    yellow:  '#ECEF50'
-    blue:    '#4169E1'
-    magenta: '#FF00FF'
-    cyan:    '#2BFFF1'
+    red:     '#f00c0c'
+    green:   '#a4c161'
+    yellow:  '#ffc56d'
+    blue:    '#6c99ba'
+    magenta: '#d096d9'
+    cyan:    '#bdd6ff'
     white:   '#ffffff'
   dim:
     black:   '#000000'
@@ -112,6 +112,45 @@ colors:
     magenta: '#770737'
     cyan:    '#098078'
     white:   '#b0b0b0'
+
+
+# # Personal palette
+# colors:
+#   primary:
+#     background: '#231f2c'
+#     # background: '#1d1f21'
+#     foreground: '#ffffff'
+#     # foreground: '#c5c8c6'
+#   cursor:
+#     text: CellBackground
+#     cursor: CellForeground
+#   normal:
+#     black:   '#1d1f21'
+#     red:     '#FF6961'
+#     green:   '#50EFA3'
+#     yellow:  '#FCA17D'
+#     blue:    '#638AFF'
+#     magenta: '#A38DC9'
+#     cyan:    '#86BBD8'
+#     white:   '#F7FBFF'
+#   bright:
+#     black:   '#404040'
+#     red:     '#ED0800'
+#     green:   '#1CE815'
+#     yellow:  '#ECEF50'
+#     blue:    '#4169E1'
+#     magenta: '#FF00FF'
+#     cyan:    '#2BFFF1'
+#     white:   '#ffffff'
+#   dim:
+#     black:   '#000000'
+#     red:     '#864343'
+#     green:   '#777c44'
+#     yellow:  '#9e824c'
+#     blue:    '#556a7d'
+#     magenta: '#770737'
+#     cyan:    '#098078'
+#     white:   '#b0b0b0'
 
 
 # colors:
@@ -280,10 +319,10 @@ colors:
 #     cyan:    "0x0abdc6"
 #     white:   "0xd7d7d5"
 
-  transparent_background_colors: false
+  transparent_background_colors: true
 
 selection:
-  save_to_clipboard: false
+  save_to_clipboard: true
 
 cursor:
   style:

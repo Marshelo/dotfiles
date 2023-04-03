@@ -1,12 +1,12 @@
 from libqtile.config import Key, KeyChord
 from libqtile.command import lazy
 from libqtile.utils import guess_terminal
-from .keys import mod, alt, left, right, up, down, leftVim, rightVim, upVim, downVim
+from .keys import super, alt, left, right, up, down, leftVim, rightVim, upVim, downVim
 
 terminal = guess_terminal
 
 
-WindowEdit = KeyChord([mod, 'control'], 'e', [
+WindowEdit = KeyChord([super, 'control'], 'e', [
         Key([], 'e', lazy.ungrab_all_chords()),
         # Switch between windows
         Key([], left, lazy.layout.left()),

@@ -1,19 +1,28 @@
 # Ignore everything
 /*
-# Except
+# ~~ Except... ~~
 !.gitignore
 !.gitmodules
 
-# Add these directories
+# Window Managers
 !qtile/
-!fish/
-!alacritty
-!ranger
-!picom
-!qutebrowser
-!sxhkd
-!kitty
+!awesome/
+!spectrwm/
+
+# Some nice programs
+!sxhkd/ # Key bindings
+!rofi/ # App launcher
+!alacritty/ # Terminal
+!kitty/ #
+!picom/ # Compositor
+!qutebrowser/ # Browser
+
+# Terminal programs
+!fish/ # Shell
+!ranger/ # Terminal File Manager
+!cava/ # Audio visualizer
+!htop/ # Task Manager
 
 # And files
-!starship.toml
+!starship.toml # Prompt
 

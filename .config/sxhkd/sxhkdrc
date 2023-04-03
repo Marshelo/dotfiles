@@ -1,17 +1,89 @@
+# ~~* DESKTOP FUNCTIONS *~~
+# * Toggle keyboard layout
+alt + Return
+    bash /home/shelo/.config/sxhkd/scripts/togglekeyboard.sh
+
+## * Apps Launcher
+#super + o
+#    rofi -combi-modi window,drun,ssh -show drun
+## * Switch windows
+#alt + Tab
+#    rofi -combi-modi window,drun,ssh -show window -theme ~/.config/rofi/launchers/type-3/style-9.rasi
+# * Emoji selector
+super + period
+    rofi -show emoji -theme ~/.config/rofi/launchers/type-3/style-emojis.rasi
+
+# * Screenshots
+Print
+    scrot -zfs
+shift + Print
+    scrot -z
+
+# * Task Manager
 control + shift + Escape
     alacritty -e htop
 
-# Reload wallpaper
-super + control + r
-    feh --bg-scale ~/Wallpapers/wallpaper7.jpg &
+# * Screens Manager
+super + F4
+    arandr
 
-# Toggle keyboard layout  # Esta combinación de teclas no es detectada
-alt + shift
-    bash /home/shelo/.config/sxhkd/scripts/togglekeyboard.sh
 
-# Browser
+# ~~* OPEN APPS *~~
+# * Terminal
+super + Return
+    kitty
+
+# * Graphic File Manger
+super + t
+    thunar
+
+# * Browser
 super + b
     brave
-# Browser in private mode:
+# * Browser in private mode:
 super + i ; super + b
     brave --incognito
+# * Notion
+super + n
+    notion-snap
+
+# ~~* DESKTOP FUNCTIONS *~~
+# ~~ AUDIO CONTROL ~~
+# * Playback (General)
+# XF86AudioPlay
+#     playerctl play-pause
+# XF86AudioPrev
+#     playerctl previous
+# XF86AudioNext
+#     playerctl next
+
+# * Playback (Spotify)
+shift + XF86AudioPlay
+    playerctl play-pause -p spotify
+shift + XF86AudioPrev
+    playerctl previous -p spotify
+shift + XF86AudioNext
+    playerctl next -p spotify
+
+# * Volume (Spotify)
+shift + XF86AudioLowerVolume
+    playerctl volume 0.1- -p spotify
+shift + XF86AudioRaiseVolume
+    playerctl volume 0.1+ -p spotify
+
+# ~~ BRIGHTNESS CONTROLL ~~
+XF86MonBrightnessUp
+    brightnessctl set +5%
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+
+# ~~ EYE COMFORT ~~
+# * Activate
+super + XF86MonBrightnessDown
+    redshift -O 4500 > /dev/null
+# * Deactivate
+shift + super + XF86MonBrightnessDown
+    redshift -x > /dev/null
+super + XF86MonBrightnessUp
+    redshift -x > /dev/null

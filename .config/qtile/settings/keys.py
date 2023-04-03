@@ -3,7 +3,7 @@
 # just with the left hand for leave free my right hand only for the mouse. And I founded the way
 # and is very efficient.
 # Actually I have to move the right hand to the keyboard for some commands, but only if I will
-# write or do more complex key combinations.  
+# write or do more complex key combinations.
 
 
 from libqtile import extension
@@ -15,13 +15,15 @@ from libqtile.backend.base import Window
 from .groups import groups, separator
 
 browser = 'brave'
+terminal = 'kitty'
+# terminal = 'alacritty'
 
 # If something happend, see the default commands here
 # https://docs.qtile.org/en/latest/manual/config/lazy.html
 
 # Hacer combinación de teclas para mostrar el modo en el que estoy
 
-mod = 'mod4' # Super key
+super = 'mod4' # Super key
 alt = 'mod1'
 
 # -- Logic for the modifier keys --
@@ -51,7 +53,6 @@ downVim = 'j'
 upVim = 'k'
 rightVim = 'l'
 
-terminal = 'kitty'
 
 # from libqtile.command.client import InteractiveCommandClient
 # c = InteractiveCommandClient()
@@ -59,128 +60,75 @@ terminal = 'kitty'
 keys = [
     # ------------ WINDOWS ------------ #
 
-    Key([mod], 'space', lazy.screen.toggle_group()),
+    Key([super], 'space', lazy.screen.toggle_group()),
     # Key([mod], 'space', c.group["sep1"].to_screen(0)),
 
     # Switch between windows
-    Key([mod], left, lazy.layout.left()),
-    Key([mod], down, lazy.layout.down()),
-    Key([mod], up, lazy.layout.up()),
-    Key([mod], right, lazy.layout.right()),
+    Key([super], left, lazy.layout.left()),
+    Key([super], down, lazy.layout.down()),
+    Key([super], up, lazy.layout.up()),
+    Key([super], right, lazy.layout.right()),
     # Key([mod], 'space', lazy.layout.next()),
 
     # Move windows
-    Key([mod, 'shift'], left, lazy.layout.shuffle_left()),
-    Key([mod, 'shift'], down, lazy.layout.shuffle_down()),
-    Key([mod, 'shift'], up, lazy.layout.shuffle_up()),
-    Key([mod, 'shift'], right, lazy.layout.shuffle_right()),
+    Key([super, 'shift'], left, lazy.layout.shuffle_left()),
+    Key([super, 'shift'], down, lazy.layout.shuffle_down()),
+    Key([super, 'shift'], up, lazy.layout.shuffle_up()),
+    Key([super, 'shift'], right, lazy.layout.shuffle_right()),
 
     # Grow windows
-    Key([mod, 'control', 'shift'], left, lazy.layout.grow_left()),
-    Key([mod, 'control', 'shift'], right, lazy.layout.grow_right()),
+    Key([super, 'control'], left, lazy.layout.grow_left()),
+    Key([super, 'control'], right, lazy.layout.grow_right()),
 
-    Key([mod, 'control', 'shift'], down,
+    Key([super, 'control'], down,
         lazy.layout.grow_down().when(layout='columns'),
         lazy.layout.shrink().when(layout='monadtall'),
         lazy.layout.shrink().when(layout='monadwide')),
-    Key([mod, 'control', 'shift'], up,
+    Key([super, 'control'], up,
         lazy.layout.grow_up().when(layout='columns'),
         lazy.layout.grow().when(layout='monadtall'),
         lazy.layout.grow().when(layout='monadwide')),
 
     # More
-    Key([mod], 'F11', lazy.window.toggle_fullscreen()),
+    Key([super], 'F11', lazy.window.toggle_fullscreen()),
 
-    Key([mod, 'control'], 'space', lazy.layout.flip()),
-    Key([mod, 'control'], 'n', lazy.layout.normalize()),
+    Key([super, 'control'], 'space', lazy.layout.flip()),
+    Key([super, 'control'], 'n', lazy.layout.normalize()),
 
-    Key([mod, 'shift'], 'space', lazy.layout.toggle_split()),
+    Key([super, 'shift'], 'space', lazy.layout.toggle_split()),
 
-    Key([mod], 'Tab', lazy.next_layout()),
-    Key([mod, 'shift'], 'Tab', lazy.prev_layout()),
-    Key([mod], 'c', lazy.window.kill()),
-    Key([mod, 'control'], 'f', lazy.window.toggle_floating()),
+    Key([super], 'Tab', lazy.next_layout()),
+    Key([super, 'shift'], 'Tab', lazy.prev_layout()),
+    Key([super, 'shift'], 'c', lazy.window.kill()),
+    Key([super, 'control'], 'f', lazy.window.toggle_floating()),
 
     # Key([mod], 'F5', lazy.restart()),
-    Key([mod], 'F5', lazy.spawn('qtile cmd-obj -o cmd -f restart')), # Change "restart" to "reload_config" if you have the qtile git version.
-    Key([mod], 'Delete', lazy.shutdown()),
+    Key([super], 'F5', lazy.spawn('qtile cmd-obj -o cmd -f restart')), # Change "restart" to "reload_config" if you have the qtile git version.
+    Key([super], 'Delete', lazy.shutdown()),
 
-    # ------------ DESKTOP APPS ------------ #
+    # ------------ DESKTOP FUNCTIONS ------------ #
+    # SOUND
+    # Volume
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ -2%')),
+    Key([], 'XF86AudioRaiseVolume', lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ +2%')),
+    Key([], 'XF86AudioMute', lazy.spawn('pactl set-sink-mute @DEFAULT_SINK@ toggle')),
 
-    # Menu
-    Key([mod], 'o', lazy.spawn('rofi -combi-modi window,drun,ssh -font "JetBrainsMono Nerd Font 15" -show drun -icon-theme "Papirus" -show-icons -theme "sidebar-v2"')),
-    Key([mod, 'shift'], 'o', lazy.run_extension(extension.DmenuRun(
-        dmenu_font='JetBrainsMono Nerd Font', dmenu_lines=4))),
-    Key([alt], 'Tab', lazy.spawn('rofi -combi-modi window,drun,ssh -font "JetBrainsMono Nerd Font 15" -show window -icon-theme "Papirus" -show-icons -theme "sidebar-v2"')),
+    # Playback
+    Key([], 'XF86AudioPlay', lazy.spawn('playerctl play-pause')),
+    Key([], 'XF86AudioPrev', lazy.spawn('playerctl previous')),
+    Key([], 'XF86AudioNext', lazy.spawn('playerctl next')),
+
+
+    # Launcher
+    Key([super], 'o', lazy.spawn('rofi -combi-modi window,drun,ssh -show drun')),
+    # Smitch windows
+    Key([alt], 'Tab', lazy.spawn('rofi -combi-modi window,drun,ssh -show window -theme ~/.config/rofi/launchers/type-3/style-9.rasi')),
 
     # Widget cmd line
-    Key([mod], 'p', lazy.spawncmd()),
+    Key([super], 'p', lazy.spawncmd()),
 
-    # Screenshot
-    Key([], 'Print', lazy.spawn('scrot -s')),
-    Key(['shift'], 'Print', lazy.spawn('scrot')),
-
-    # ------------ APPS ------------ #
-
-    # Spotify
-    Key([mod, alt], 's',
-        lazy.spawn('playerctl play-pause -p spotify')),
-    Key(['shift'], 'XF86AudioPlay',
-        lazy.spawn('playerctl play-pause -p spotify')),
-
-    Key(['shift'], 'XF86AudioPrev',
-        lazy.spawn('playerctl previous -p spotify')),
-    Key(['shift'], 'XF86AudioNext',
-        lazy.spawn('playerctl next -p spotify')),
-
-    # ~~ Open ~~
-    # Browser
-    # Key([mod], 'b', lazy.spawn(browser)),
-    Key([mod, 'shift'], 'b', lazy.spawn('qutebrowser')),
-
-    # Notion
-    Key([mod], 'n', lazy.spawn('notion-snap')),
-
-    # Terminal
-    Key([mod], 'Return', lazy.spawn(terminal)),
-
-    # File manager
-    Key([mod], 't', lazy.spawn('thunar')),
-
-
-    # ------------ ?? ------------ #
-
-    Key([alt], 'Return', # Toggle keyboard map
-        lazy.spawn('bash /home/shelo/.config/qtile/scripts/toggleKeyboard.sh'),
-        desc='Toggle keymap beetwen US & Latam keyboard'),
-
-    # ------------ Function Keys ------------ #
-
-    # Volume
-    Key([], 'XF86AudioLowerVolume',
-        lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ -2%')),
-    Key([], 'XF86AudioRaiseVolume',
-        lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ +2%')),
-    Key([], 'XF86AudioMute',
-        lazy.spawn('pactl set-sink-mute @DEFAULT_SINK@ toggle')),
-
-    # Player control
-    Key([], 'XF86AudioPlay',
-        lazy.spawn('playerctl play-pause')),
-    Key([], 'XF86AudioPrev',
-        lazy.spawn('playerctl previous')),
-    Key([], 'XF86AudioNext',
-        lazy.spawn('playerctl next')),
-
-    # Brightness
-    Key([], 'XF86MonBrightnessUp',
-        lazy.spawn('brightnessctl set +5%')),
-    Key([], 'XF86MonBrightnessDown',
-        lazy.spawn('brightnessctl set 5%-')),
-
-    Key([mod], 'F4', lazy.spawn('arandr')),
+    Key([super, alt], 'h', lazy.hide_show_bar("bottom")),
 ]
-# cambiar nombre variable actual_key a current_key
 
 
 first_nums = 3
@@ -211,44 +159,6 @@ for i, group in enumerate(groups):
 
     if not current_key == '':
         keys.extend([
-            Key([mod], current_key, lazy.group[group.name].toscreen()),
-            Key([mod, 'shift'], current_key, lazy.window.togroup(group.name))
+            Key([super], current_key, lazy.group[group.name].toscreen()),
+            Key([super, 'shift'], current_key, lazy.window.togroup(group.name))
         ])
-
-# first_nums = 3
-# group_keys = 'qwe'
-# common_first_nums = 1
-# common_group_keys = 'r'
-# sep = 0
-# for i, group in enumerate(groups):
-
-#     current_key = ''
-#     ii = i - sep
-#     # the ii var back the i value to his natural course after adding a separator
-#     # because the separator is actually another group but I skip it whit this if
-#     # statement below to don't add any shortcut to it.
-#     if group.label == separator:
-#         sep += 1
-#         continue
-
-#     if sep < 2:
-#         if ii < first_nums:
-#             current_key = str(ii + 1)
-#         elif ii < first_nums + len(group_keys):
-#             current_key = group_keys[ii - first_nums]
-#     if sep == 2:
-#         if ii - first_nums - len(group_keys) < common_first_nums:
-#             current_key = str(ii - len(group_keys) + 1)
-#         elif ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys):
-#             current_key = common_group_keys[ii - first_nums - len(group_keys) - common_first_nums]
-#             pass
-#     if sep == 3:
-#         if ii < first_nums + len(group_keys) + common_first_nums + len(common_group_keys) + 9:
-#             current_key = str(ii - (len(group_keys) + len(common_group_keys)) + 1)
-    
-#     if not current_key == '':
-#         keys.extend([
-#             Key([mod], current_key, lazy.group[group.name].toscreen()),
-#             Key([mod, 'shift'], current_key, lazy.window.togroup(group.name))
-#         ])
-

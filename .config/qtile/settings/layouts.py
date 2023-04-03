@@ -21,35 +21,46 @@ layouts = [
         grow_amount=5, # Default: 10
         wrap_focus_columns=False,
         wrap_focus_rows=False
-        ),
-    layout.MonadTall(
-        border_focus='#ffffff',
-        border_normal='#000000',
-        ratio=0.6,
-        change_ratio=0.05,
-        border_width=2,
-        margin=0,
-        single_margin=0,
-        single_border_width=0
-        ),
-    layout.MonadWide(
-        border_focus='#ffffff',
-        border_normal='#000000',
-        change_ratio=0.05,
-        border_width=2,
-        ratio=0.55,
-        single_margin=0,
-        single_border_width=0,
-        min_ratio=0.10,
-        max_ratio=0.90
     ),
     layout.Max(),
+    layout.Zoomy(),
+    layout.Bsp(
+        border_focus='#ffffff',
+        border_normal='#000000',
+        border_focus_stack='#00faaa',
+        border_width=2,
+        margin=0,
+        fair=False,
+        margin_on_single=False,
+        grow_amount=5, # Default: 10
+        wrap_focus_columns=False,
+        wrap_focus_rows=False),
+    # layout.MonadTall(
+    #     border_focus='#ffffff',
+    #     border_normal='#000000',
+    #     ratio=0.6,
+    #     change_ratio=0.05,
+    #     border_width=2,
+    #     margin=0,
+    #     single_margin=0,
+    #     single_border_width=0
+    # ),
+    # layout.MonadWide(
+    #     border_focus='#ffffff',
+    #     border_normal='#000000',
+    #     change_ratio=0.05,
+    #     border_width=2,
+    #     ratio=0.55,
+    #     single_margin=0,
+    #     single_border_width=0,
+    #     min_ratio=0.10,
+    #     max_ratio=0.90
+    # ),
 
     # Seguir investigando cuando ocupe 2 pantallas o más.
 
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
     # layout.Matrix(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -70,4 +81,5 @@ floating_layout = layout.Floating(float_rules=[
 ],
 border_focus='#ffffff',
 border_normal='#000000',
+border_width=0,
 )

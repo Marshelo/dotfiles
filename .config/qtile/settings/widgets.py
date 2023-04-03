@@ -3,6 +3,9 @@ from libqtile.config import Screen
 from .groups import space
 from libqtile.command import lazy
 from libqtile import qtile
+from .palette import colors as color
+
+os_icon = '   '
 
 widget_defaults = dict(
     font='JetBrainsMono Nerd Font',
@@ -17,7 +20,7 @@ def triangle(fg='#ffffff', bg='#000000', direction='left', shadow=None):
     if direction == 'left':
         triangle = ''
     elif direction == 'right':
-        triangle = ''
+        triangle = ' '
         # 
     return widget.TextBox(
         text=triangle,
@@ -62,140 +65,164 @@ def display_groups(visible=[], hide_unused=False, fg='#ff00ff', bg='#00ffff', hi
         visible_groups=visible,
         hide_unused=hide_unused
     )
-colors = {
-    'bg': '#21252B', 'fg': '#fafafa',
-    'gray1': '#282C34', 'gray2': '#c5c5c5', 'gray3': '#d7dae0',
-    'almost white': '#dddddd', 'white': '#ffffff',
-    'black': '#000000',
-    'screen1a': '#6759ff', 'screen1b': '#0637a0'
-    }
 
 widget_box = widget.WidgetBox(widgets=[
-                    widget.TextBox(text="CPU", foreground='#000000', background=colors['gray3']),
+                    widget.TextBox(text="CPU", foreground='#000000', background=color['gray3'], font='Ubuntu NF'),
                     widget.CPUGraph(
+                        margin_y=0,
+                        margin_x=0,
+                        border_color=color['gray3'],
                         device='sda',
                         type='linefill',
                         line_width=1,
-                        background=colors['gray3'],
-                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
+                        background=color['gray3'],
+                        # mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
                     ),
-                    widget.TextBox(text="RAM", foreground='#000000', background=colors['gray3']),
+                    widget.TextBox(text="RAM", foreground='#000000', background=color['gray3'], font='Ubuntu NF'),
                     widget.MemoryGraph(
+                        margin_y=0,
+                        margin_x=0,
+                        border_color=color['gray3'],
                         device='sda',
                         type='linefill',
                         line_width=1,
-                        background=colors['gray3'],
-                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
+                        background=color['gray3'],
+                        # mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
                     ),
-                    widget.TextBox(text="DISC", foreground='#000000', background=colors['gray3']),
+                    widget.TextBox(text="DISC", foreground='#000000', background=color['gray3'], font='Ubuntu NF'),
                     widget.HDDBusyGraph(
+                        margin_y=0,
+                        margin_x=0,
+                        border_color=color['gray3'],
                         device='sda',
                         type='linefill',
                         line_width=1,
-                        background=colors['gray3'],
-                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
+                        background=color['gray3'],
+                        # mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
                     ),
-                    widget.TextBox(text="NET", foreground='#000000', background=colors['gray3']),
+                    widget.TextBox(text="NET", foreground='#000000', background=color['gray3'], font='Ubuntu NF'),
                     widget.NetGraph(
+                        margin_y=0,
+                        margin_x=0,
+                        border_color=color['gray3'],
                         device='sda',
                         type='linefill',
                         line_width=1,
-                        background=colors['gray3'],
-                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
+                        background=color['gray3'],
+                        # mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('alacritty -e htop')}
                     ),
                     ],
                     close_button_location='right',
                     font='JetBrainsMono Nerd Font',
                     fontsize='24',
-                    foreground=colors['black'],
+                    foreground=color['black'],
                     center_aligned=False,
-                    text_open=' ',
-                    text_closed=' ',
-                    background=colors['gray3']
+                    text_open=' 﫵 ',
+                    text_closed='  﫵 ',
+                    background=color['gray3'],
+                    mouse_callbacks = {'Button2': lambda: qtile.cmd_spawn('alacritty -e htop')}
                 )
+
+foo = widget.Systray(padding=5)
 
 def toggleBox(qtile):
     widget_box.cmd_toggle()
+    print('conshesumare AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    print(foo.Icon.icon_size)
 
 screens = [
     Screen(
         bottom=bar.Bar(
             [
+                widget.TextBox(
+                    text=os_icon,
+                    font='JetBrainsMono Nerd Font',
+                    fontsize=20,
+                    padding=7,
+                    foreground=color['gray2'],
+                    background=color['bg'],
+                    fontshadow='#101010',
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('rofi -combi-modi window,drun,ssh -show window -theme ~/.config/rofi/launchers/type-3/style-9.rasi')}
+                ),
+                triangle(color['bg'], color['gray3'], 'right', shadow='#101010'),
                 display_groups([space[0], space[1], space[2]],
-                    fg=colors['fg'],
-                    bg=colors['gray1'],
-                    active=colors['gray2'],
-                    highlight=colors['gray1'],
-                    screen=colors['screen1a'],
+                    bg=color['gray3'],
+                    fg=color['almost black'],
+                    active=color['gray1'],
+                    inactive=color['gray2'],
+                    highlight=color['gray3'],
+                    screen=color['screen1b'],
                     hide_unused=True
                 ),
-                triangle(colors['gray1'], colors['gray3'], 'right', shadow='#0a0a0a'),
+                triangle(color['gray3'], color['bg'], 'right', shadow='#000000'),
                 display_groups([space[3], space[4], space[5]],
-                    bg=colors['gray3'],
-                    fg=colors['black'],
-                    active=colors['gray1'],
-                    inactive=colors['gray2'],
-                    highlight=colors['gray3'],
-                    screen=colors['screen1b']
+                    fg=color['fg'],
+                    bg=color['bg'],
+                    active=color['gray2'],
+                    inactive=color['gray0'],
+                    highlight=color['bg'],
+                    screen=color['screen1a']
                 ),
-                triangle(colors['gray3'], colors['gray1'], 'right', shadow='#000000'),
+                triangle(color['bg'], color['gray3'], 'right', shadow='#101010'),
                 display_groups([space[6], space[7], space[8]],
-                    fg=colors['fg'],
-                    bg=colors['gray1'],
-                    active=colors['gray2'],
-                    highlight=colors['gray1'],
-                    screen=colors['screen1a'],
+                    bg=color['gray3'],
+                    fg=color['almost black'],
+                    active=color['gray1'],
+                    inactive=color['gray2'],
+                    highlight=color['gray3'],
+                    screen=color['screen1b'],
                     hide_unused=True
                 ),
-                triangle(colors['gray1'], colors['bg'], 'right', shadow='#0a0a0a'),
+                triangle(color['gray3'], color['bg'], 'right', shadow='#0a0a0a'),
                 # widget.Spacer(length=20),
-                widget.CurrentLayoutIcon(foreground=colors['white'], scale=0.8, padding=20 ),
+                widget.CurrentLayoutIcon(foreground=color['white'], scale=0.8, padding=20 ),
                 # widget.WindowCount(font='UbuntuMono NF Bold'),
                 widget.Prompt(
-                    font='JetBrainsMono Nerd Font',
+                    font='Your Doodle Font',
                     fontsize=15,
-                    padding=40,
-                    prompt=' ',
-                    foreground=colors['almost white'],
-                    cursor_color=colors['almost white'],
-                    background=colors['bg'],
+                    padding=0,
+                    prompt='>_ ',
+                    fmt='{} \\',
+                    foreground=color['almost white'],
+                    cursor_color=color['almost white'],
+                    background=color['bg'],
                     # fontshadow='#000000',
                     cursorblink=0.3,
                     ignore_dups_history=True,
                     record_history=False,
                     visual_bell_time=1,
+                    bell_style=None
                 ),
                 widget.WindowName(
-                    font='UbuntuMono NF Bold',
-                    foreground=colors['white'],
-                    fontsize=11,
+                    font='Ubuntu NF Bold',
+                    foreground=color['white'],
+                    fontsize=13,
                     padding=100,
                     max_chars=40
                 ),
                 widget.TextBox(
                     text='',
-                    font='JetBrainsMono Nerd Font',
-                    fontsize=26.5,
+                    font='ComicSans',
+                    fontsize=28,
                     padding=0,
-                    foreground=colors['gray3'],
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_function(toggleBox)}
+                    foreground=color['gray3'],
+                    background=None,
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_function(toggleBox), 'Button2': lambda: qtile.cmd_spawn('alacritty -e htop')}
                 ),
                 widget_box,
                 widget.TextBox(
-                    text='',
-                    font='JetBrainsMono Nerd Font',
-                    fontsize=26,
+                    text=' ',
+                    font='ComciSans',
+                    fontsize=28,
                     padding=0,
-                    marginx=5,
-                    foreground=colors['gray3'],
+                    foreground=color['gray3'],
                     fontshadow='#000000',
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_function(toggleBox)}
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_function(toggleBox), 'Button2': lambda: qtile.cmd_spawn('alacritty -e htop')}
                 ),
-                widget.TextBox(text=' ', padding=5),
                 widget.Sep(),
                 # widget.Spacer(length=51),
                 # widget.Spacer(),
-                widget.Systray(padding=5,),
+                foo,
                 widget.Spacer(length=10),
                 # widget.Wlan(),
                 # widget.Net(),
@@ -216,6 +243,7 @@ screens = [
                     # background='#dddddd',
                 ),
                 widget.CheckUpdates(
+                    font='UbuntuMono Nerd Font',
                     no_update_string='0',
                     display_format='{updates}',
                     update_interval=1800,
@@ -225,8 +253,9 @@ screens = [
                 # widget.CapsNumLockIndicator(),
                 widget.Sep(),
                 widget.Clock(
+                    font='Ubuntu NF Bold',
                     format='%H:%M %a %d/%m/%Y',
-                    foreground=colors['white'],
+                    foreground=color['white'],
                     # background='#bfbfbf',
                     padding=10
                 ),
@@ -235,84 +264,96 @@ screens = [
             opacity=1,
             margin=0,
             background='#21252B',
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=['ff00ff', '000000', 'ff00ff', '000000']  # Borders are magenta
+            border_width=[4, 0, 4, 0],  # Draw top and bottom borders
+            border_color=[color['bg'], '000000', color['bg'], '000000']  # Borders are magenta
         ),
     ),
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
-                display_groups([space[0], space[1], space[2]], bg='#454545', highlight='#454545'),
-                triangle('#454545', '#ffffff', 'right'),
-                display_groups([space[3], space[4], space[5]], bg='#ffffff', hide_unused=True, highlight='#ffffff'),
-                triangle('#ffffff', '#454545', 'right'),
-                display_groups([space[6], space[7], space[8]], hide_unused=True, bg='#454545', highlight='#454545'),
-                triangle('#454545', '#000000', 'right'),
+                widget.TextBox(
+                    text=os_icon,
+                    font='JetBrainsMono Nerd Font',
+                    fontsize=20,
+                    padding=7,
+                    foreground=color['gray2'],
+                    background=color['bg'],
+                    fontshadow='#101010'
+                    # mouse_callbacks = {'Button1': lambda: qtile.cmd_function(toggleBox)}
+                ),
+                triangle(color['bg'], color['gray3'], 'right', shadow='#101010'),
+                display_groups([space[0], space[1], space[2]],
+                    bg=color['gray3'],
+                    fg=color['almost black'],
+                    active=color['gray1'],
+                    inactive=color['gray2'],
+                    highlight=color['gray3'],
+                    screen=color['screen1b'],
+                    hide_unused=True
+                ),
+                triangle(color['gray3'], color['bg'], 'right', shadow='#000000'),
+                display_groups([space[3], space[4], space[5]],
+                    fg=color['fg'],
+                    bg=color['bg'],
+                    active=color['gray2'],
+                    inactive=color['gray0'],
+                    highlight=color['bg'],
+                    screen=color['screen1a']
+                ),
+                triangle(color['bg'], color['gray3'], 'right', shadow='#101010'),
+                display_groups([space[6], space[7], space[8]],
+                    bg=color['gray3'],
+                    fg=color['almost black'],
+                    active=color['gray1'],
+                    inactive=color['gray2'],
+                    highlight=color['gray3'],
+                    screen=color['screen1b'],
+                    hide_unused=True
+                ),
+                triangle(color['gray3'], color['bg'], 'right', shadow='#0a0a0a'),
                 # widget.Spacer(length=20),
-                widget.CurrentLayoutIcon( scale=0.8, padding=20 ),
+                widget.CurrentLayoutIcon(foreground=color['white'], scale=0.8, padding=20 ),
                 # widget.WindowCount(font='UbuntuMono NF Bold'),
                 widget.Prompt(
-                    font='JetBrainsMono Nerd Font',
+                    font='Your Doodle Font',
                     fontsize=15,
-                    padding=40,
-                    prompt=' : ',
-                    foreground='#ffffff',
-                    cursor_color='#ffffff',
-                    background='#222222',
-                    #fontshadow='#000000',
+                    padding=0,
+                    prompt='>_ ',
+                    fmt='{} \\',
+                    foreground=color['almost white'],
+                    cursor_color=color['almost white'],
+                    background=color['bg'],
+                    # fontshadow='#000000',
                     cursorblink=0.3,
                     ignore_dups_history=True,
                     record_history=False,
                     visual_bell_time=1,
+                    bell_style=None
                 ),
+                widget.Spacer(length=10),
                 widget.WindowName(
-                    font='UbuntuMono NF Bold',
-                    fontsize=11,
+                    font='Ubuntu NF Bold',
+                    foreground=color['white'],
+                    fontsize=13,
                     padding=100,
                     max_chars=40
                 ),
-                # widget.Spacer(length=51),
-                # widget.Spacer(),
-                widget.Systray(padding=5,),
-                widget.Spacer(length=10),
-                # widget.Wlan(),
-                # widget.Net(),
-                widget.TextBox(
-                    text='',
-                    font='sans',
-                    fontsize=20,
-                    # background='#dddddd',
-                ),
-                widget.KeyboardLayout(
-                    font='UbuntuMono Nerd Font'
-                ),
-                widget.TextBox(
-                    text='',
-                    font='sans',
-                    fontsize=20,
-                    # background='#dddddd',
-                ),
-                widget.CheckUpdates(
-                    no_update_string='0',
-                    display_format='{updates}',
-                    update_interval=1800,
-                    custom_command='checkupdates',
-                ),
-                widget.Spacer(length=10),
                 # widget.CapsNumLockIndicator(),
                 widget.Sep(),
                 widget.Clock(
+                    font='Ubuntu NF Bold',
                     format='%H:%M %a %d/%m/%Y',
-                    foreground='#ffffff',
+                    foreground=color['white'],
                     # background='#bfbfbf',
                     padding=10
                 ),
             ],
-            24,
-            opacity=0.95,
+            30,
+            opacity=1,
             margin=0,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=['ff00ff', '000000', 'ff00ff', '000000']  # Borders are magenta
+            background='#21252B',
+            border_width=[4, 0, 4, 0],  # Draw top and bottom borders
+            border_color=[color['bg'], '000000', color['bg'], '000000']  # Borders are magenta
         ),
     ),
 ]
