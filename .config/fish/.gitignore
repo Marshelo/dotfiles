@@ -3,4 +3,5 @@
 !.gitignore
 
 # Except
-!functions
+!functions/
+!config.fish
