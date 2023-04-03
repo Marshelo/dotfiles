@@ -1,7 +1,6 @@
-# Ignore all in fish
+# Ignore everything
 /*
-!.gitignore
 
-# Except
-!functions/
+# Except:
 !config.fish
+!functions/
