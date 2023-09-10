@@ -107,6 +107,9 @@ keys = [
     Key([super], 'Delete', lazy.shutdown()),
 
     # ------------ DESKTOP FUNCTIONS ------------ #
+    # Open File Manager ranger in terminal
+    Key([super], 'r', lazy.spawn('kitty -e ranger')),
+
     # SOUND
     # Volume
     Key([], 'XF86AudioLowerVolume', lazy.spawn('pactl set-sink-volume @DEFAULT_SINK@ -2%')),
@@ -117,6 +120,10 @@ keys = [
     Key([], 'XF86AudioPlay', lazy.spawn('playerctl play-pause')),
     Key([], 'XF86AudioPrev', lazy.spawn('playerctl previous')),
     Key([], 'XF86AudioNext', lazy.spawn('playerctl next')),
+    # Playback (but with Volume buttons)
+    Key(['control'], 'XF86AudioMute', lazy.spawn('playerctl play-pause')),
+    Key(['control'], 'XF86AudioLowerVolume', lazy.spawn('playerctl previous')),
+    Key(['control'], 'XF86AudioRaiseVolume', lazy.spawn('playerctl next')),
 
 
     # Launcher
@@ -127,7 +134,7 @@ keys = [
     # Widget cmd line
     Key([super], 'p', lazy.spawncmd()),
 
-    Key([super, alt], 'h', lazy.hide_show_bar("bottom")),
+    Key([super], 'h', lazy.hide_show_bar("bottom")),
 ]
 
 

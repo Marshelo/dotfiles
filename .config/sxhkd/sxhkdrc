@@ -1,0 +1,109 @@
+# ~~* DESKTOP FUNCTIONS *~~
+# * Toggle keyboard layout
+alt + Return
+    bash /home/shelo/.config/sxhkd/scripts/togglekeyboard.sh
+
+## * Apps Launcher
+#super + o
+#    rofi -combi-modi window,drun,ssh -show drun
+## * Switch windows
+#alt + Tab
+#    rofi -combi-modi window,drun,ssh -show window -theme ~/.config/rofi/launchers/type-3/style-9.rasi
+# * Emoji selector
+super + period
+    rofi -show emoji -theme ~/.config/rofi/launchers/type-3/style-emojis.rasi
+
+# * Screenshots
+Print
+    scrot -zfs
+shift + Print
+    scrot -z
+
+# * Task Manager
+control + shift + Escape
+    kitty -e htop
+
+# * Screens Manager
+super + F4
+    arandr
+
+
+# ~~* OPEN APPS *~~
+# * Terminal
+super + Return
+    kitty
+
+# * Graphic File Manger
+super + t
+    thunar
+
+# * Browser
+# Brave
+# super + b
+#     brave
+# # * Browser in private mode:
+# super + i ; super + b
+#     brave --incognito
+super + b
+    qutebrowser
+# * Browser in private mode:
+super + i ; super + b
+    firefox --private-window
+
+# * Notion
+super + n
+    notion-snap
+
+# ~~* DESKTOP FUNCTIONS *~~
+# ~~ AUDIO CONTROL ~~
+# * Playback (General)
+# XF86AudioPlay
+#     playerctl play-pause
+# XF86AudioPrev
+#     playerctl previous
+# XF86AudioNext
+#     playerctl next
+
+# * Playback (Spotify)
+shift + XF86AudioPlay
+    playerctl play-pause -p spotify
+shift + XF86AudioPrev
+    playerctl previous -p spotify
+shift + XF86AudioNext
+    playerctl next -p spotify
+
+# * Playback (Spotify)
+alt + XF86AudioMute
+    playerctl play-pause -p spotify
+alt + XF86AudioLowerVolume
+    playerctl previous -p spotify
+alt + XF86AudioRaiseVolume
+    playerctl next -p spotify
+
+# * Volume (Spotify)
+shift + XF86AudioLowerVolume
+    playerctl volume 0.1- -p spotify
+shift + XF86AudioRaiseVolume
+    playerctl volume 0.1+ -p spotify
+
+# ~~ BRIGHTNESS CONTROLL ~~
+XF86MonBrightnessUp
+    brightnessctl set 5%+
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+alt + XF86MonBrightnessUp
+    brightnessctl set 1%+
+alt + XF86MonBrightnessDown
+    brightnessctl set 1%-
+
+
+# ~~ EYE COMFORT ~~
+# * Activate
+super + XF86MonBrightnessDown
+    redshift -O 4500 > /dev/null
+# * Deactivate
+shift + super + XF86MonBrightnessDown
+    redshift -x > /dev/null
+super + XF86MonBrightnessUp
+    redshift -x > /dev/null

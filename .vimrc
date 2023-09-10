@@ -49,6 +49,8 @@ Plug 'mhinz/vim-signify' "Diff saved file with the current file
 Plug 'yggdrrot/indentline' "Show a line for tabs
 Plug 'scrooloose/nerdcommenter' "Comment the current line
 
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 colorscheme gruvbox
@@ -59,5 +61,31 @@ let mapleader=" "
 
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>nt :NERDTreeFind<CR>
+
+" My commands
+" Latex
+command! CompileLatex w | execute '!mkdir -p aux && pdflatex -output-directory=aux ' . @%
+command! CompileLatexVerbose w | execute '!alacritty -e fish -c "mkdir -p aux && pdflatex -output-directory=aux ' . @% . ' && read -p \"echo \n\nPress Enter to close this window...\"" &'
+" command! CompileLatexVerbose w | execute 'new | 0read !mkdir -p aux && pdflatex -output-directory=aux ' . @% " This open new pane to output the shell text but is not so good with the input
+cnoreabbrev compile CompileLatex
+cnoreabbrev compilev CompileLatexVerbose
+cnoreabbrev latex CompileLatex
+cnoreabbrev latexv CompileLatexVerbose
+command! OpenPDF execute '!zathura aux/' . expand('%:r') . '.pdf &'
+cnoreabbrev pdf OpenPDF<Esc>
+
+
+" Short Cuts and Key bindings
+nmap S gg
+nmap Z G
+" Tabs
+nmap <a-a> gT
+nmap <a-x> gt
+nmap <a-s> :execute 'buffer ' . ((bufnr("%")+len(getbufinfo({'buflisted':1}))-2)%len(getbufinfo({'buflisted':1})) + 1)<return>
+nmap <a-z> :execute 'buffer ' . (bufnr("%")%len(getbufinfo({'buflisted':1})) + 1)<return>
+
+" Latex
+nmap ,mm :CompileLatex<CR><Esc>
+nmap ,wm :CompileLatexVerbose<CR><Esc>
 
 

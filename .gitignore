@@ -2,6 +2,7 @@
 /*
 !.gitignore
 
+!./.MyKeys
 # Except
 !.config
 !.xsession
