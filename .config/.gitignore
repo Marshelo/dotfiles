@@ -24,4 +24,8 @@
 !htop/
 
 # And files
+<<<<<<< HEAD
 !starship.toml
+=======
+!starship.toml # Prompt
+>>>>>>> refs/remotes/origin/main
