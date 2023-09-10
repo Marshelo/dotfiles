@@ -10,19 +10,18 @@
 !spectrwm/
 
 # Some nice programs
-!sxhkd/ # Key bindings
-!rofi/ # App launcher
-!alacritty/ # Terminal
-!kitty/ #
-!picom/ # Compositor
-!qutebrowser/ # Browser
+!sxhkd/
+!rofi/
+!alacritty/
+!kitty/
+!picom/
+!qutebrowser/
 
 # Terminal programs
-!fish/* # Shell
-!ranger/ # Terminal File Manager
-!cava/ # Audio visualizer
-!htop/ # Task Manager
+!fish/
+!ranger/
+!cava/
+!htop/
 
 # And files
-!starship.toml # Prompt
-
+!starship.toml

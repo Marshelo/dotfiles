@@ -1,0 +1,8 @@
+/*
+!.gitignore
+!bookmarks/
+!themes/
+!autoconfig.yml
+!config.py
+!quickmarks
+!theme.py.backup

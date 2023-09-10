@@ -13,7 +13,7 @@ layouts = [
     layout.Columns(
         border_focus='#ffffff',
         border_normal='#000000',
-        border_focus_stack='#00faaa',
+        border_focus_stack='#909090',
         border_width=2,
         margin=0,
         fair=False,
@@ -27,7 +27,7 @@ layouts = [
     layout.Bsp(
         border_focus='#ffffff',
         border_normal='#000000',
-        border_focus_stack='#00faaa',
+        border_focus_stack='#909090',
         border_width=2,
         margin=0,
         fair=False,

@@ -35,7 +35,7 @@ fi
 # Some shortcuts
 sxhkd &
 # Set the 100% of brightness
-brightnessctl set 100% &
+#brightnessctl set 100% &
 # Image compositor
 
 picom --config ~/.config/picom/picom.conf -b &
@@ -55,7 +55,8 @@ xrandr --output eDP1 --primary --mode 1366x768 --pos 1360x0 --rotate normal --ou
 
 # Wallpaper
 # feh --bg-scale ~/Wallpapers/wallpaper7.jpg &
-nitrogen --restore
+# nitrogen --restore
+nitrogen --random --set-zoom-fill
 # Keyboard layout
 setxkbmap es && xmodmap ~/.MyKeys && bash /home/shelo/.config/qtile/scripts/toggleKeyboard.sh &
 
@@ -64,5 +65,3 @@ setxkbmap es && xmodmap ~/.MyKeys && bash /home/shelo/.config/qtile/scripts/togg
 
 # Not enough? Visit this GitHub repository with more:
 # https://github.com/antoniosarosi/dotfiles/tree/83fb32e60921a879cfab717553f8f016e0145d2b
-
-alacritty -e bash ~/.updater.sh &
