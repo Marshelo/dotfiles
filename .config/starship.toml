@@ -2,7 +2,7 @@
 
 format = """
 [ ](bg: fg:#ffffff)\
-[󰙚 ](bg:#ffffff fg:#000000)\
+[󰙚](bg:#ffffff fg:#000000)\
 [](bg:#86BBD8 fg:#ffffff)\
 $username\
 [](bg:#DA627D fg:#86BBD8)\
